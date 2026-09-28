@@ -25,12 +25,14 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.35.5",
     "vite": "^6.0.7"
   },
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build && node -e \"import('fs').then(fs => fs.copyFileSync('build/index.html', 'build/404.html'))\"",
+    "generate-assets": "node scripts/generate-assets.mjs",
     "preview": "vite preview"
   },
   "eslintConfig": {

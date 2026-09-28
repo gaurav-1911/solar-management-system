@@ -1,0 +1,19 @@
+# robots.txt for Solar Management System by Gaurav Chavda
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /features
+Allow: /benefits
+Allow: /faq
+Allow: /contact
+Allow: /login
+
+# Disallow private and administrative areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /reset-password/
+Disallow: /admin/*
+
+# Host & Sitemap
+Sitemap: https://gaurav-1911.github.io/solar-management-system/sitemap.xml
+Sitemap: https://solar-management.gauravchavda.in/sitemap.xml

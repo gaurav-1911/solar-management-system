@@ -1,0 +1,6 @@
+Contact: mailto:gauravchavda.vhits@gmail.com
+Expires: 2028-12-31T23:59:59.000Z
+Preferred-Languages: en, gu, hi
+Canonical: https://gaurav-1911.github.io/solar-management-system/.well-known/security.txt
+Policy: https://gaurav-1911.github.io/solar-management-system/security
+Acknowledgments: https://gaurav-1911.github.io/solar-management-system/humans.txt

@@ -1,4 +1,4 @@
-﻿.auth-wrapper {
+.auth-wrapper {
   display: flex;
   min-height: 100vh;
   font-family: var(--font-family);
@@ -42,11 +42,25 @@
 .auth-brand {
   text-align: center;
   z-index: 1;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
-.auth-brand-icon {
-  margin-bottom: 20px;
+.auth-brand-logo-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  transition: transform 0.25s ease;
+}
+
+.auth-brand-logo-link:hover {
+  transform: scale(1.05);
+}
+
+.auth-brand-logo-img {
+  width: 88px;
+  height: auto;
+  max-height: 88px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(245, 158, 11, 0.3));
 }
 
 .auth-brand-title {

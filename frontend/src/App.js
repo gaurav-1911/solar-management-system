@@ -8,9 +8,13 @@ import { hasAnyAccess } from "./config/roles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
-import Login from "./admin/login/login";
+// Public SEO Landing and Content Pages
+const LandingPage = lazy(() => import("./pages/public/LandingPage"));
+const AboutPage = lazy(() => import("./pages/public/AboutPage"));
+const NotFoundPage = lazy(() => import("./pages/public/NotFoundPage"));
 
-// Lazy load route-level page components for performance and code-splitting
+// Auth & Admin components
+const Login = lazy(() => import("./admin/login/login"));
 const ForgotPassword = lazy(() => import("./admin/ForgotPassword/Forgot.Password"));
 const ResetPassword = lazy(() => import("./admin/ResetPassword/ResetPassword"));
 const Dashboard = lazy(() => import("./admin/dashboard/Dashboard/Dashboard"));
@@ -40,7 +44,7 @@ const ProtectedRoute = ({ children }) => {
   if (!permissionsReady) {
     return <PageLoader fullScreen />;
   }
-  if (!isAuthenticated) return <Navigate to="/admin/login" replace />;
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
   // The Profile page is self-service and stays available to signed-in users
   // even when their role has zero module permissions (e.g. from the
   // Access Denied header).
@@ -51,7 +55,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-const PublicRoute = ({ children }) => {
+const PublicAuthRoute = ({ children }) => {
   const { isAuthenticated, permissions, permissionsReady } = useAuth();
   if (!permissionsReady) {
     return <PageLoader fullScreen />;
@@ -66,17 +70,9 @@ const PublicRoute = ({ children }) => {
   return children;
 };
 
-/**
- * Access Denied — shown to any signed-in user who lands on a section they
- * don't have permission for (zero-permission users, or users who open a module
- * such as User Management / Roles & Permissions without that module granted).
- * It must NOT bounce users with partial access back to the dashboard, or a
- * user lacking e.g. the "users" module would loop forever between the two
- * routes. The Dashboard-level guard redirects here instead.
- */
 const AccessDeniedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/admin/login" replace />;
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
   return children;
 };
 
@@ -88,24 +84,42 @@ function App() {
           <NotificationProvider>
             <Router>
               <ErrorBoundary>
-              <Suspense fallback={<PageLoader fullScreen />}>
-                <Routes>
-                  <Route path="/admin/login" element={<PublicRoute><Login /></PublicRoute>} />
-                  <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-                  <Route path="/admin/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-                  <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-                  <Route path="/admin/reset-password/:token" element={<ResetPassword />} />
-                  <Route path="/admin/reset-password" element={<ResetPassword />} />
-                  <Route path="/reset-password/:token" element={<ResetPassword />} />
-                  <Route path="/reset-password" element={<ResetPassword />} />
-                  <Route path="/quotation/respond/:quotationId" element={<QuotationResponse />} />
-                  <Route path="/admin/access-denied" element={<AccessDeniedRoute><AccessDenied /></AccessDeniedRoute>} />
-                  <Route path="/admin/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                  <Route path="/admin/:section" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                  <Route path="/admin/:section/:id" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                  <Route path="*" element={<Navigate to="/admin/login" replace />} />
-                </Routes>
-              </Suspense>
+                <Suspense fallback={<PageLoader fullScreen />}>
+                  <Routes>
+                    {/* Public SEO & Content Pages */}
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/about-gaurav-chavda" element={<AboutPage />} />
+                    <Route path="/features" element={<LandingPage />} />
+                    <Route path="/benefits" element={<LandingPage />} />
+                    <Route path="/faq" element={<LandingPage />} />
+                    <Route path="/contact" element={<LandingPage />} />
+
+                    {/* Authentication Routes */}
+                    <Route path="/login" element={<PublicAuthRoute><Login /></PublicAuthRoute>} />
+                    <Route path="/admin/login" element={<PublicAuthRoute><Login /></PublicAuthRoute>} />
+                    <Route path="/forgot-password" element={<PublicAuthRoute><ForgotPassword /></PublicAuthRoute>} />
+                    <Route path="/admin/forgot-password" element={<PublicAuthRoute><ForgotPassword /></PublicAuthRoute>} />
+                    <Route path="/reset-password/:token" element={<ResetPassword />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
+                    <Route path="/admin/reset-password/:token" element={<ResetPassword />} />
+                    <Route path="/admin/reset-password" element={<ResetPassword />} />
+
+                    {/* Customer Quotation Public Response */}
+                    <Route path="/quotation/respond/:quotationId" element={<QuotationResponse />} />
+
+                    {/* Protected Admin & Dashboard Routes */}
+                    <Route path="/admin/access-denied" element={<AccessDeniedRoute><AccessDenied /></AccessDeniedRoute>} />
+                    <Route path="/admin/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/admin/:section" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/admin/:section/:id" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
+                    {/* 404 Dedicated Not Found Page */}
+                    <Route path="/404" element={<NotFoundPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                  </Routes>
+                </Suspense>
               </ErrorBoundary>
             </Router>
           </NotificationProvider>

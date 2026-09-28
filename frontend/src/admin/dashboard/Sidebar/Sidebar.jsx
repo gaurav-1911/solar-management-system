@@ -612,7 +612,14 @@ const Sidebar = ({ activeItem, onNavigate }) => {
             </svg>
           </div>
         ) : (
-          <img src={solarLogo} alt="Solar Management System" className="sidebar-brand-logo" />
+          <img
+            src={solarLogo}
+            alt="Solar Management System - Gaurav Chavda"
+            className="sidebar-brand-logo"
+            width="180"
+            height="50"
+            loading="eager"
+          />
         )}
       </div>
 

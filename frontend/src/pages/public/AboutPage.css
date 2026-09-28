@@ -1,0 +1,273 @@
+.about-page-root {
+  background-color: #0b1120;
+  color: #f8fafc;
+  min-height: 100vh;
+  font-family: var(--app-font-family);
+}
+
+.about-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.1) 0%, transparent 60%), #0b1120;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.breadcrumb-nav {
+  margin-bottom: 24px;
+}
+
+.breadcrumb-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.breadcrumb-list a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.breadcrumb-list a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-list .sep {
+  color: #64748b;
+}
+
+.about-title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 12px 0 16px;
+}
+
+.about-tagline {
+  font-size: 18px;
+  color: #94a3b8;
+  max-width: 720px;
+  margin: 0;
+}
+
+.about-tagline strong {
+  color: #f59e0b;
+}
+
+.about-content-section {
+  padding: 64px 0 96px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.about-bio-article h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 40px 0 16px;
+  letter-spacing: -0.3px;
+}
+
+.about-bio-article h2:first-of-type {
+  margin-top: 0;
+}
+
+.about-bio-article p {
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+
+.about-bio-article strong {
+  color: #f1f5f9;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 24px;
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-list li::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  color: #f59e0b;
+}
+
+.tech-stack-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+
+.tech-card {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.tech-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fbbf24;
+  margin: 0 0 8px;
+}
+
+.tech-card p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ========== SIDEBAR PROFILE ========== */
+.profile-card {
+  background: #0f172a;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 96px;
+}
+
+.profile-logo-img {
+  width: 140px;
+  height: auto;
+  margin: 0 auto 16px;
+  filter: drop-shadow(0 6px 16px rgba(245, 158, 11, 0.3));
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.profile-alias {
+  color: #f59e0b;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 2px 0 6px;
+}
+
+.profile-title {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  background: #090d16;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.meta-item a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.meta-item a:hover {
+  text-decoration: underline;
+}
+
+.profile-social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-social {
+  display: block;
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s;
+}
+
+.btn-social:hover {
+  background: #f59e0b;
+  color: #0f172a;
+}
+
+.profile-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 20px 0;
+}
+
+.btn-launch-app {
+  display: block;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0b1120;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-launch-app:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    position: static;
+  }
+}

@@ -1,0 +1,12 @@
+/* TEAM */
+Creator & Lead Engineer: Gaurav Chavda (Chavda Gaurav)
+Contact: gauravchavda.vhits@gmail.com
+Location: Rajkot, Gujarat, India
+Role: Full-Stack Engineer & Technical Architect
+Specialization: Solar CRM, Renewable Energy Dashboards, Real-Time Monitoring Systems
+
+/* SITE */
+Standards: HTML5, CSS3, ES6+, React 19, Vite
+Components: Leaflet, Recharts, TanStack Query
+Deployment: Production Optimized SPA with Dynamic Meta & Schema.org JSON-LD
+Last Update: September 2026

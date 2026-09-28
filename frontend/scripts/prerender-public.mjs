@@ -143,20 +143,14 @@ console.log('\n=============================================');
 console.log('🚀 GENERATING PRERENDERED PUBLIC HTML PAGES');
 console.log('=============================================');
 
-// 1. Root / Home
-writePage('', 'home', 0);
+// 1. Root / Home & Login
+writePage('', 'login', 0);
 
 // 2. /about and /about-gaurav-chavda
 writePage('about', 'about', 1);
 writePage('about-gaurav-chavda', 'about', 1);
 
-// 3. Section direct routes
-writePage('features', 'features', 1);
-writePage('benefits', 'benefits', 1);
-writePage('faq', 'faq', 1);
-writePage('contact', 'contact', 1);
-
-// 4. Fallback 404
+// 3. Fallback 404
 const notFoundHtml = renderMeta('notFound', 0);
 fs.writeFileSync(path.join(buildDir, '404.html'), notFoundHtml);
 console.log('  ✓ Generated /404.html [notFound]');

@@ -20,26 +20,12 @@ export const NotFoundPage = () => {
           </p>
 
           <div className="not-found-actions">
-            <Link to="/" className="btn-primary-hero">
-              ← Return to Home
+            <Link to="/login" className="btn-primary-hero">
+              Sign In to Dashboard →
             </Link>
             <Link to="/about" className="btn-secondary-hero">
               About Gaurav Chavda
             </Link>
-            <Link to="/login" className="btn-secondary-hero">
-              Sign In to Dashboard
-            </Link>
-          </div>
-
-          <div className="not-found-helpful-links">
-            <p>Popular destinations:</p>
-            <div className="helpful-pills">
-              <a href="/#features">Core Features</a>
-              <a href="/#how-it-works">How It Works</a>
-              <a href="/#calculator">Solar ROI Calculator</a>
-              <a href="/#faq">FAQ</a>
-              <a href="/#contact">Contact</a>
-            </div>
           </div>
         </div>
       </main>

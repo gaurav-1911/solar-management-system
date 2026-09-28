@@ -8,8 +8,7 @@ import { hasAnyAccess } from "./config/roles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
-// Public SEO Landing and Content Pages
-const LandingPage = lazy(() => import("./pages/public/LandingPage"));
+// Public & Auth Pages
 const AboutPage = lazy(() => import("./pages/public/AboutPage"));
 const NotFoundPage = lazy(() => import("./pages/public/NotFoundPage"));
 
@@ -93,16 +92,8 @@ function App() {
               <ErrorBoundary>
                 <Suspense fallback={<PageLoader fullScreen />}>
                   <Routes>
-                    {/* Public SEO & Content Pages */}
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/about-gaurav-chavda" element={<AboutPage />} />
-                    <Route path="/features" element={<LandingPage />} />
-                    <Route path="/benefits" element={<LandingPage />} />
-                    <Route path="/faq" element={<LandingPage />} />
-                    <Route path="/contact" element={<LandingPage />} />
-
-                    {/* Authentication Routes */}
+                    {/* Primary Application & Authentication Routes */}
+                    <Route path="/" element={<PublicAuthRoute><Login /></PublicAuthRoute>} />
                     <Route path="/login" element={<PublicAuthRoute><Login /></PublicAuthRoute>} />
                     <Route path="/admin/login" element={<PublicAuthRoute><Login /></PublicAuthRoute>} />
                     <Route path="/forgot-password" element={<PublicAuthRoute><ForgotPassword /></PublicAuthRoute>} />
@@ -111,6 +102,10 @@ function App() {
                     <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="/admin/reset-password/:token" element={<ResetPassword />} />
                     <Route path="/admin/reset-password" element={<ResetPassword />} />
+
+                    {/* Content & Profile Pages */}
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/about-gaurav-chavda" element={<AboutPage />} />
 
                     {/* Customer Quotation Public Response */}
                     <Route path="/quotation/respond/:quotationId" element={<QuotationResponse />} />

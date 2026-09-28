@@ -141,7 +141,7 @@ if (fs.existsSync(aboutPath)) {
   assert(aboutHtml.includes('../assets/'), 'about/index.html has correct relative ../assets/ path');
 }
 
-const sectionDirs = ['features', 'benefits', 'faq', 'contact', 'about-gaurav-chavda'];
+const sectionDirs = ['about-gaurav-chavda'];
 for (const sDir of sectionDirs) {
   const p = path.join(buildDir, `${sDir}/index.html`);
   assert(fs.existsSync(p), `${sDir}/index.html exists`);

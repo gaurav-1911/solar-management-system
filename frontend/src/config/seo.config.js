@@ -154,7 +154,7 @@ export const PAGES_SEO = {
   },
   login: {
     title: "Sign In | Solar Management System by Gaurav Chavda", // 51 chars
-    description: "Secure login portal for Solar Management System administrators, project managers, accountants, and field technicians.", // 118 chars
+    description: "Secure sign in portal for Solar Management System by Gaurav Chavda. Access solar plant monitoring dashboards, project quotations, and AMC operations.", // 149 chars
     canonical: "/login",
     keywords: ["solar management system login", "solar CRM sign in", "Gaurav Chavda admin portal"],
     breadcrumb: [

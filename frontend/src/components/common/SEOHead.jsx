@@ -41,11 +41,11 @@ export const SEOHead = ({ pageKey = "home", customTitle, customDescription, cust
     setMeta("name", "description", description);
     setMeta("name", "keywords", keywords);
     setMeta("name", "author", `${SITE_CONFIG.author} (${SITE_CONFIG.alternateAuthorName})`);
-    setMeta("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    setMeta("name", "robots", pageKey === "notFound" ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
     setMeta("name", "geo.region", "IN-GJ");
-    setMeta("name", "geo.placename", "Rajkot");
-    setMeta("name", "geo.position", `${SITE_CONFIG.location.geo.latitude};${SITE_CONFIG.location.geo.longitude}`);
-    setMeta("name", "ICBM", `${SITE_CONFIG.location.geo.latitude}, ${SITE_CONFIG.location.geo.longitude}`);
+    setMeta("name", "geo.placename", SITE_CONFIG.location?.city || "Rajkot");
+    setMeta("name", "geo.position", `${SITE_CONFIG.location?.geo?.latitude || "22.3039"};${SITE_CONFIG.location?.geo?.longitude || "70.8022"}`);
+    setMeta("name", "ICBM", `${SITE_CONFIG.location?.geo?.latitude || "22.3039"}, ${SITE_CONFIG.location?.geo?.longitude || "70.8022"}`);
 
     // Canonical & Hreflang
     setLink("canonical", canonicalUrl);

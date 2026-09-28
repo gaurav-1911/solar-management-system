@@ -2,18 +2,15 @@
 User-agent: *
 Allow: /
 Allow: /about
-Allow: /features
-Allow: /benefits
-Allow: /faq
-Allow: /contact
-Allow: /login
+Allow: /assets/
+Allow: /favicon.svg
+Allow: /logo.png
+Allow: /og-image-1200x630.png
+Allow: /whatsapp-share-1200x1200.png
 
-# Disallow private and administrative areas
+# Disallow private and administrative areas (Secured by JWT Auth & RBAC)
 Disallow: /admin/
 Disallow: /api/
 Disallow: /reset-password/
-Disallow: /admin/*
 
-# Host & Sitemap
 Sitemap: https://gaurav-1911.github.io/solar-management-system/sitemap.xml
-Sitemap: https://solar-management.gauravchavda.in/sitemap.xml

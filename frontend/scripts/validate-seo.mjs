@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const buildDir = path.resolve(__dirname, '../build');
-const publicDir = path.resolve(__dirname, '../public');
 
 let failed = 0;
 let passed = 0;
@@ -24,7 +23,7 @@ console.log('🔍 RUNNING PRODUCTION SEO & ASSET VALIDATION');
 console.log('=============================================\n');
 
 // 1. Validate Robots.txt
-console.log('[1/6] Validating robots.txt...');
+console.log('[1/7] Validating robots.txt...');
 const robotsPath = path.join(buildDir, 'robots.txt');
 assert(fs.existsSync(robotsPath), 'robots.txt exists in build output');
 const robotsContent = fs.readFileSync(robotsPath, 'utf8');
@@ -34,7 +33,7 @@ assert(robotsContent.includes('Disallow: /admin/'), 'robots.txt blocks private a
 assert(robotsContent.includes('Sitemap: https://'), 'robots.txt includes absolute Sitemap URL');
 
 // 2. Validate Sitemap.xml
-console.log('\n[2/6] Validating sitemap.xml...');
+console.log('\n[2/7] Validating sitemap.xml...');
 const sitemapPath = path.join(buildDir, 'sitemap.xml');
 assert(fs.existsSync(sitemapPath), 'sitemap.xml exists in build output');
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
@@ -44,14 +43,14 @@ assert(sitemapContent.includes('<loc>https://gaurav-1911.github.io/solar-managem
 assert(sitemapContent.includes('<priority>1.0</priority>'), 'sitemap.xml defines page priority');
 
 // 3. Validate IndexNow Key File
-console.log('\n[3/6] Validating IndexNow Key File...');
+console.log('\n[3/7] Validating IndexNow Key File...');
 const indexNowPath = path.join(buildDir, 'e4d7b2a9f1c84365908271e54a3b6c8d.txt');
 assert(fs.existsSync(indexNowPath), 'IndexNow key file exists');
 const indexNowContent = fs.readFileSync(indexNowPath, 'utf8').trim();
 assert(indexNowContent === 'e4d7b2a9f1c84365908271e54a3b6c8d', 'IndexNow key file content matches filename key');
 
 // 4. Validate Icons & Favicons
-console.log('\n[4/6] Validating Favicons & Open Graph Assets...');
+console.log('\n[4/7] Validating Favicons & Open Graph Assets...');
 const requiredFiles = [
   { file: 'favicon.ico', minSize: 1000, maxSize: 50000 },
   { file: 'favicon-16x16.png', minSize: 100, maxSize: 5000 },
@@ -76,8 +75,8 @@ for (const req of requiredFiles) {
   }
 }
 
-// 5. Validate HTML & Metadata in index.html
-console.log('\n[5/6] Validating HTML Head & Metadata...');
+// 5. Validate HTML & Metadata in index.html (Homepage)
+console.log('\n[5/7] Validating HTML Head & Metadata in index.html...');
 const indexPath = path.join(buildDir, 'index.html');
 assert(fs.existsSync(indexPath), 'index.html exists in build');
 const indexHtml = fs.readFileSync(indexPath, 'utf8');
@@ -87,8 +86,8 @@ const titleMatch = indexHtml.match(/<title>(.*?)<\/title>/);
 assert(titleMatch !== null, 'HTML contains <title>');
 if (titleMatch) {
   const title = titleMatch[1];
-  console.log(`    Title content: "${title}" (${title.length} characters)`);
-  assert(title.length >= 40 && title.length <= 60, `Title length (${title.length} chars) is in optimal 40-60 character range`);
+  console.log(`    Home Title: "${title}" (${title.length} chars)`);
+  assert(title.length >= 40 && title.length <= 60, `Title length (${title.length} chars) is in optimal 40-60 range`);
 }
 
 // Meta description check (140-160 chars target)
@@ -96,7 +95,7 @@ const descMatch = indexHtml.match(/<meta name="description" content="(.*?)"/);
 assert(descMatch !== null, 'HTML contains <meta name="description">');
 if (descMatch) {
   const desc = descMatch[1];
-  console.log(`    Description content: "${desc}" (${desc.length} characters)`);
+  console.log(`    Home Description: "${desc}" (${desc.length} chars)`);
   assert(desc.length >= 120 && desc.length <= 165, `Description length (${desc.length} chars) is in optimal 120-165 range`);
 }
 
@@ -105,8 +104,7 @@ assert(indexHtml.includes('<link rel="canonical"'), 'HTML has <link rel="canonic
 assert(indexHtml.includes('property="og:image"'), 'HTML has Open Graph og:image');
 assert(indexHtml.includes('name="twitter:card" content="summary_large_image"'), 'HTML has Twitter summary_large_image card');
 
-// 6. Validate Structured Data (JSON-LD)
-console.log('\n[6/6] Validating JSON-LD Structured Data Schema...');
+// Structured Data (JSON-LD)
 const jsonLdMatch = indexHtml.match(/<script type="application\/ld\+json" id="structured-data-jsonld">([\s\S]*?)<\/script>/);
 assert(jsonLdMatch !== null, 'JSON-LD script tag exists in HTML');
 if (jsonLdMatch) {
@@ -132,10 +130,31 @@ if (jsonLdMatch) {
   }
 }
 
+// 6. Validate Prerendered Subpages (About, Aliases, Sections)
+console.log('\n[6/7] Validating Prerendered Static Subpages...');
+const aboutPath = path.join(buildDir, 'about/index.html');
+assert(fs.existsSync(aboutPath), 'about/index.html exists');
+if (fs.existsSync(aboutPath)) {
+  const aboutHtml = fs.readFileSync(aboutPath, 'utf8');
+  assert(aboutHtml.includes('<title>About Gaurav Chavda'), 'about/index.html has dedicated page title');
+  assert(aboutHtml.includes('canonical" href="https://gaurav-1911.github.io/solar-management-system/about"'), 'about/index.html has correct canonical URL');
+  assert(aboutHtml.includes('../assets/'), 'about/index.html has correct relative ../assets/ path');
+}
+
+const sectionDirs = ['features', 'benefits', 'faq', 'contact', 'about-gaurav-chavda'];
+for (const sDir of sectionDirs) {
+  const p = path.join(buildDir, `${sDir}/index.html`);
+  assert(fs.existsSync(p), `${sDir}/index.html exists`);
+}
+
 // 7. Validate 404 Fallback
-console.log('\n[7/6] Validating 404.html fallback for GitHub Pages...');
+console.log('\n[7/7] Validating 404.html fallback for GitHub Pages...');
 const fourOhFourPath = path.join(buildDir, '404.html');
 assert(fs.existsSync(fourOhFourPath), '404.html exists in build output');
+if (fs.existsSync(fourOhFourPath)) {
+  const fourOhFourHtml = fs.readFileSync(fourOhFourPath, 'utf8');
+  assert(fourOhFourHtml.includes('noindex, follow'), '404.html specifies "noindex, follow" robots directive');
+}
 
 console.log('\n=============================================');
 console.log(`📊 VALIDATION SUMMARY: ${passed} PASSED, ${failed} FAILED`);

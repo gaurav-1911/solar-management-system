@@ -17,7 +17,11 @@ export const SITE_CONFIG = {
     state: "Gujarat",
     country: "India",
     postalCode: "360001",
-    region: "IN-GJ"
+    region: "IN-GJ",
+    geo: {
+      latitude: "22.3039",
+      longitude: "70.8022"
+    }
   },
   baseUrl: "https://gaurav-1911.github.io/solar-management-system",
   contactEmail: "gauravchavda.vhits@gmail.com",

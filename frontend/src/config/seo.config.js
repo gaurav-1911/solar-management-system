@@ -10,50 +10,35 @@ export const SITE_CONFIG = {
   tagline: "Monitor, Manage & Optimise Solar Energy",
   author: "Gaurav Chavda",
   alternateAuthorName: "Chavda Gaurav",
-  authorJobTitle: "Senior Full-Stack Engineer & Technical Architect",
-  authorBio: "Gaurav Chavda (also known as Chavda Gaurav) is a full-stack engineer and renewable energy software architect based in Rajkot, Gujarat, India, specializing in enterprise Solar CRMs, IoT monitoring platforms, and EPC automation systems.",
-  company: "Solar Management System Solutions",
+  authorJobTitle: "Full-Stack Engineer & Solar Software Architect",
+  authorBio: "Gaurav Chavda (also known as Chavda Gaurav) is a full-stack engineer and renewable energy software developer based in Rajkot, Gujarat, India, specializing in enterprise Solar CRM and IoT plant monitoring platforms.",
   location: {
     city: "Rajkot",
     state: "Gujarat",
     country: "India",
     postalCode: "360001",
-    region: "IN-GJ",
-    geo: {
-      latitude: "22.3039",
-      longitude: "70.8022"
-    }
+    region: "IN-GJ"
   },
   baseUrl: "https://gaurav-1911.github.io/solar-management-system",
-  customDomainUrl: "https://solar-management.gauravchavda.in",
   contactEmail: "gauravchavda.vhits@gmail.com",
   phone: "+91 98765 00001",
   socialLinks: {
     github: "https://github.com/gaurav-1911",
     linkedin: "https://www.linkedin.com/in/gaurav-chavda-solar",
-    twitter: "https://twitter.com/gauravchavda_dev",
-    youtube: "https://www.youtube.com/@gauravchavdasolar"
+    twitter: "https://twitter.com/gauravchavda_dev"
   },
-  verification: {
-    google: "GSC_VERIFICATION_PLACEHOLDER_TOKEN",
-    bing: "BING_VERIFICATION_PLACEHOLDER_TOKEN",
-    yandex: "YANDEX_VERIFICATION_PLACEHOLDER_TOKEN"
-  },
+  indexNowKey: "e4d7b2a9f1c84365908271e54a3b6c8d",
   defaultOgImage: "/og-image-1200x630.png",
   defaultOgImageWebp: "/og-image-1200x630.webp",
   whatsappShareImage: "/whatsapp-share-1200x1200.png",
   logoUrl: "/logo.png",
   themeColor: "#f59e0b",
   keywords: [
-    // Brand & Author Keywords
     "Gaurav Chavda",
     "Chavda Gaurav",
     "Gaurav Chavda Rajkot",
     "Gaurav Chavda developer",
     "Gaurav Chavda solar",
-    "Gaurav Chavda Gujarat",
-    "Gaurav Chavda India",
-    // Core Domain Keywords
     "solar management system",
     "solar monitoring software",
     "solar plant management",
@@ -68,22 +53,14 @@ export const SITE_CONFIG = {
     "solar management system Rajkot",
     "solar management system Gujarat",
     "solar management system India",
-    // Long-tail & Functional Keywords
-    "PM Surya Ghar Muft Bijli Yojana CRM",
-    "solar quotation generator India",
-    "solar site survey app",
-    "solar technician dispatch software",
-    "solar AMC warranty management",
-    "solar EPC project tracker",
-    "real-time solar inverter monitoring",
-    "solar panel degradation tracker"
+    "PM Surya Ghar Muft Bijli Yojana CRM"
   ]
 };
 
 export const PAGES_SEO = {
   home: {
-    title: "Solar Management System | Gaurav Chavda - Monitor, Manage & Optimise Solar Energy",
-    description: "Enterprise Solar Management System & CRM by Gaurav Chavda in Rajkot, Gujarat. Real-time solar plant monitoring, automated quotations, technician tracking & AMC.",
+    title: "Solar Management System | Gaurav Chavda - Solar CRM", // 52 chars (perfect 50-60 range)
+    description: "Enterprise Solar Management System & CRM by Gaurav Chavda in Rajkot, Gujarat. Real-time solar plant monitoring, quotations, technician tracking & AMC.", // 151 chars
     canonical: "/",
     keywords: [
       "solar management system",
@@ -98,8 +75,8 @@ export const PAGES_SEO = {
     ]
   },
   about: {
-    title: "About Gaurav Chavda | Creator of Solar Management System",
-    description: "Learn about Gaurav Chavda (Chavda Gaurav), lead full-stack engineer and solar software architect behind the Solar Management System in Rajkot, Gujarat, India.",
+    title: "About Gaurav Chavda | Creator of Solar Management System", // 56 chars
+    description: "Learn about Gaurav Chavda (Chavda Gaurav), full-stack engineer and solar software architect behind the Solar Management System in Rajkot, Gujarat.", // 149 chars
     canonical: "/about",
     keywords: [
       "Gaurav Chavda",
@@ -114,15 +91,14 @@ export const PAGES_SEO = {
     ]
   },
   features: {
-    title: "Features | Solar Management System & CRM by Gaurav Chavda",
-    description: "Explore all features of Solar Management System: IoT solar monitoring, automated quotations, site surveys, field technician tracking, inventory and subsidy workflows.",
+    title: "Features | Solar Management System by Gaurav Chavda", // 52 chars
+    description: "Explore Solar Management System features: real-time telemetry, automated quotations, 3D site surveys, technician dispatch, inventory, and subsidy tracking.", // 157 chars
     canonical: "/features",
     keywords: [
       "solar management system features",
       "solar CRM features",
       "solar site survey software",
-      "solar technician dispatch",
-      "solar quotation maker"
+      "solar technician dispatch"
     ],
     breadcrumb: [
       { name: "Home", url: "/" },
@@ -130,14 +106,13 @@ export const PAGES_SEO = {
     ]
   },
   benefits: {
-    title: "Benefits of Solar Management System | Gaurav Chavda",
-    description: "Maximize solar ROI, cut maintenance downtime by 40%, and automate solar EPC workflows with the Solar Management System built by Gaurav Chavda in Gujarat.",
+    title: "Benefits | Solar Management System by Gaurav Chavda", // 52 chars
+    description: "Maximize solar plant ROI, eliminate EPC paperwork, and automate maintenance workflows with Solar Management System engineered by Gaurav Chavda.", // 146 chars
     canonical: "/benefits",
     keywords: [
       "solar CRM benefits",
       "solar plant optimization ROI",
-      "solar maintenance software benefits",
-      "solar EPC efficiency"
+      "solar maintenance software benefits"
     ],
     breadcrumb: [
       { name: "Home", url: "/" },
@@ -145,14 +120,13 @@ export const PAGES_SEO = {
     ]
   },
   faq: {
-    title: "FAQ | Solar Management System by Gaurav Chavda",
-    description: "Frequently asked questions about Solar Management System, solar plant monitoring, PM Surya Ghar subsidy tracking, and solar EPC automation in India.",
+    title: "FAQ | Solar Management System by Gaurav Chavda", // 47 chars
+    description: "Get answers to frequently asked questions about the Solar Management System, PM Surya Ghar subsidy tracking, and solar EPC automation by Gaurav Chavda.", // 152 chars
     canonical: "/faq",
     keywords: [
       "solar management system FAQ",
       "solar monitoring software questions",
-      "Gaurav Chavda solar software help",
-      "solar CRM queries"
+      "Gaurav Chavda solar software help"
     ],
     breadcrumb: [
       { name: "Home", url: "/" },
@@ -160,14 +134,13 @@ export const PAGES_SEO = {
     ]
   },
   contact: {
-    title: "Contact Gaurav Chavda | Solar Management System Inquiries",
-    description: "Get in touch with Gaurav Chavda in Rajkot, Gujarat for Solar Management System deployment, custom enterprise solar CRM integrations, and support.",
+    title: "Contact Gaurav Chavda | Solar Management System", // 48 chars
+    description: "Get in touch with Gaurav Chavda in Rajkot, Gujarat for Solar Management System deployment, custom enterprise solar software, and technical support.", // 147 chars
     canonical: "/contact",
     keywords: [
       "contact Gaurav Chavda",
-      "Gaurav Chavda Rajkot address",
-      "solar management system contact",
-      "solar software engineer Rajkot"
+      "Gaurav Chavda Rajkot",
+      "solar management system contact"
     ],
     breadcrumb: [
       { name: "Home", url: "/" },
@@ -175,8 +148,8 @@ export const PAGES_SEO = {
     ]
   },
   login: {
-    title: "Sign In | Solar Management System by Gaurav Chavda",
-    description: "Secure login portal for Solar Management System administrators, project managers, accountants, and field technicians.",
+    title: "Sign In | Solar Management System by Gaurav Chavda", // 51 chars
+    description: "Secure login portal for Solar Management System administrators, project managers, accountants, and field technicians.", // 118 chars
     canonical: "/login",
     keywords: ["solar management system login", "solar CRM sign in", "Gaurav Chavda admin portal"],
     breadcrumb: [
@@ -185,8 +158,8 @@ export const PAGES_SEO = {
     ]
   },
   notFound: {
-    title: "404 - Page Not Found | Solar Management System",
-    description: "The page you are looking for does not exist on Solar Management System by Gaurav Chavda. Return to our dashboard or home page.",
+    title: "404 - Page Not Found | Solar Management System", // 47 chars
+    description: "The page you requested was not found on Solar Management System by Gaurav Chavda. Return to our homepage or sign in to your dashboard.", // 134 chars
     canonical: "/404",
     keywords: ["solar management system 404", "page not found"],
     breadcrumb: [
@@ -199,34 +172,34 @@ export const PAGES_SEO = {
 export const FAQ_DATA = [
   {
     question: "What is the Solar Management System created by Gaurav Chavda?",
-    answer: "The Solar Management System is an end-to-end enterprise CRM, IoT monitoring, and EPC workflow platform designed by Gaurav Chavda in Rajkot, Gujarat, India. It streamlines solar leads, site surveys, quotation calculations, technician field dispatch, inventory tracking, AMC maintenance, and PM Surya Ghar subsidy documentation."
+    answer: "The Solar Management System is an enterprise CRM, IoT monitoring, and EPC workflow platform designed by Gaurav Chavda in Rajkot, Gujarat, India. It streamlines solar leads, site surveys, quotation calculations, technician field dispatch, inventory tracking, AMC maintenance, and PM Surya Ghar subsidy documentation."
   },
   {
     question: "Who is Gaurav Chavda (Chavda Gaurav)?",
-    answer: "Gaurav Chavda (also searched as Chavda Gaurav) is a senior full-stack engineer, cloud architect, and renewable energy software specialist based in Rajkot, Gujarat, India. He architected the Solar Management System to solve operational inefficiencies in commercial and rooftop solar installations across India."
+    answer: "Gaurav Chavda (also searched as Chavda Gaurav) is a full-stack engineer and renewable energy software developer based in Rajkot, Gujarat, India. He architected the Solar Management System to streamline operations for commercial and rooftop solar installations."
   },
   {
     question: "Can this solar software monitor energy output in real-time?",
-    answer: "Yes. The Solar Management System features real-time telemetry dashboards that display instantaneous power generation (kW), cumulative energy yield (kWh), string inverter performance, performance ratio (PR), and automated alert notifications for inverter faults or grid downtime."
+    answer: "Yes. The Solar Management System features real-time telemetry dashboards that display power generation (kW), energy yield (kWh), string inverter performance, performance ratio (PR), and automated alert notifications for inverter faults or grid downtime."
   },
   {
     question: "Does the system support Indian government solar subsidy workflows (PM Surya Ghar)?",
-    answer: "Yes. The platform includes dedicated modules for PM Surya Ghar Muft Bijli Yojana tracking, DISCOM net-metering application logging, document verification, inspection scheduling, and direct subsidy disbursement status updates."
+    answer: "Yes. The platform includes dedicated tracking for PM Surya Ghar Muft Bijli Yojana workflows, DISCOM net-metering application logging, document verification, inspection scheduling, and subsidy disbursement status updates."
   },
   {
     question: "How does the system handle field technicians and site surveys?",
-    answer: "Field technicians can access GPS-tagged site surveys, capture rooftop azimuth and shadow profiles, record daily progress logs with photographic evidence, and manage scheduled service visits with offline-ready forms."
+    answer: "Field technicians can record GPS-tagged site surveys, capture rooftop azimuth and shadow profiles, log daily progress with photos, and manage scheduled service visits."
   },
   {
     question: "Is this Solar Management System suitable for solar EPCs in Rajkot and Gujarat?",
-    answer: "Absolutely. Tailored specifically for Gujarat's leading solar energy hub and nationwide EPC companies, it handles local DISCOM standards (PGVCL, DGVCL, MGVCL, UGVCL), GST invoicing, warehouse multi-branch inventory, and bilingual communication."
+    answer: "Yes. Tailored specifically for Gujarat's solar hub and nationwide EPC companies, it supports local DISCOM workflows (PGVCL, DGVCL, MGVCL, UGVCL), GST invoicing, multi-warehouse inventory, and role-based access control."
   }
 ];
 
 export const getStructuredData = (pageKey = "home") => {
   const page = PAGES_SEO[pageKey] || PAGES_SEO.home;
   
-  // 1. Person Schema
+  // 1. Person Schema (Accurate author profile)
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -247,12 +220,11 @@ export const getStructuredData = (pageKey = "home") => {
     "sameAs": [
       SITE_CONFIG.socialLinks.github,
       SITE_CONFIG.socialLinks.linkedin,
-      SITE_CONFIG.socialLinks.twitter,
-      SITE_CONFIG.socialLinks.youtube
+      SITE_CONFIG.socialLinks.twitter
     ]
   };
 
-  // 2. Organization & WebSite Schema
+  // 2. WebSite Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -263,11 +235,6 @@ export const getStructuredData = (pageKey = "home") => {
     "description": SITE_CONFIG.tagline,
     "publisher": {
       "@id": `${SITE_CONFIG.baseUrl}/#person`
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${SITE_CONFIG.baseUrl}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
     }
   };
 
@@ -279,66 +246,25 @@ export const getStructuredData = (pageKey = "home") => {
     "name": SITE_CONFIG.name,
     "alternateName": "Solar PMS by Gaurav Chavda",
     "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web, iOS, Android, Windows, macOS",
+    "operatingSystem": "Web",
     "description": page.description,
     "url": SITE_CONFIG.baseUrl,
-    "softwareVersion": "1.0.0",
     "author": {
       "@id": `${SITE_CONFIG.baseUrl}/#person`
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/OnlineOnly"
     },
     "featureList": [
       "Real-time IoT Solar Generation Monitoring",
       "Automated Solar Quotation and Proposal Generation",
-      "Rooftop Solar Site Survey & 3D Shadow Analysis",
+      "Rooftop Solar Site Survey & Azimuth Analysis",
       "Field Technician Dispatch & GPS Tracking",
       "Preventive AMC Maintenance Scheduling",
-      "PM Surya Ghar Subsidy & Net Metering Workflow",
-      "GST Invoicing, Credit Notes & Payment Gateways",
+      "PM Surya Ghar Subsidy Workflow Tracking",
+      "GST Invoicing, Credit Notes & Billing",
       "Role-Based Access Control (RBAC) & Audit Logs"
     ]
   };
 
-  // 4. LocalBusiness Schema
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${SITE_CONFIG.baseUrl}/#localbusiness`,
-    "name": `${SITE_CONFIG.name} - Gaurav Chavda`,
-    "image": `${SITE_CONFIG.baseUrl}/og-image-1200x630.png`,
-    "telephone": SITE_CONFIG.phone,
-    "email": SITE_CONFIG.contactEmail,
-    "url": SITE_CONFIG.baseUrl,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Tagore Road, Near Crystal Mall",
-      "addressLocality": SITE_CONFIG.location.city,
-      "addressRegion": SITE_CONFIG.location.state,
-      "postalCode": SITE_CONFIG.location.postalCode,
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": SITE_CONFIG.location.geo.latitude,
-      "longitude": SITE_CONFIG.location.geo.longitude
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      }
-    ],
-    "priceRange": "₹₹"
-  };
-
-  // 5. Breadcrumbs Schema
+  // 4. Breadcrumbs Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -350,7 +276,7 @@ export const getStructuredData = (pageKey = "home") => {
     }))
   };
 
-  // 6. FAQ Schema
+  // 5. FAQ Schema (Included on home/faq pages)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -368,7 +294,6 @@ export const getStructuredData = (pageKey = "home") => {
     personSchema,
     websiteSchema,
     softwareAppSchema,
-    localBusinessSchema,
     breadcrumbSchema,
     faqSchema
   ];

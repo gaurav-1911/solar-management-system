@@ -76,13 +76,20 @@ const AccessDeniedRoute = ({ children }) => {
   return children;
 };
 
+const getBasename = () => {
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/solar-management-system")) {
+    return "/solar-management-system";
+  }
+  return "";
+};
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <AuthProvider>
           <NotificationProvider>
-            <Router>
+            <Router basename={getBasename()}>
               <ErrorBoundary>
                 <Suspense fallback={<PageLoader fullScreen />}>
                   <Routes>

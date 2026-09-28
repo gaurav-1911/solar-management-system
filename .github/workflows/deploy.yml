@@ -39,8 +39,8 @@ jobs:
       - name: Build Frontend
         working-directory: frontend
         env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL || 'http://localhost:5000/api' }}
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL || 'http://localhost:5000/api' }}
+          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://solar-management-system-15wy.onrender.com/api' }}
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL || 'https://solar-management-system-15wy.onrender.com/api' }}
         run: |
           npm run build
           cp build/index.html build/404.html

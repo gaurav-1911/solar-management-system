@@ -111,7 +111,6 @@ const customerSchema = new mongoose.Schema(
 
 customerSchema.index({ createdAt: -1 });
 customerSchema.index({ status: 1, type: 1, createdAt: -1 });
-customerSchema.index({ technicianId: 1 });
 
 const Customer = mongoose.model("Customer", customerSchema);
 

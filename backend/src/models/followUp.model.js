@@ -109,7 +109,6 @@ const followUpSchema = new mongoose.Schema(
 // Indexes
 followUpSchema.index({ createdAt: -1 });
 followUpSchema.index({ scheduledDate: 1, status: 1 });
-followUpSchema.index({ assignedTo: 1 });
 followUpSchema.index({ leadId: 1, scheduledDate: 1 });
 followUpSchema.index({ customerId: 1, scheduledDate: 1 });
 

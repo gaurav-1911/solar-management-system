@@ -1,0 +1,613 @@
+/* ═══════════════════════════════════════════════════════════
+   Common Dropdown Component
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Wrapper ─────────────────────────────────────────────── */
+.cdropdown {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 160px;
+  /* width: 100%; */
+}
+
+.cdropdown-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  font-family: var(--font-family);
+}
+
+/* ── Trigger Button ──────────────────────────────────────── */
+.cdropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 500;
+  color: #1a2332;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.15s;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.cdropdown-trigger:hover {
+  border-color: #2c5364;
+  background: #f8fafb;
+}
+
+.cdropdown-open .cdropdown-trigger {
+  border-color: #2c5364;
+  box-shadow: 0 0 0 3px rgba(44, 83, 100, 0.1);
+  background: #ffffff;
+}
+
+.cdropdown-disabled .cdropdown-trigger {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Text & Chevron ──────────────────────────────────────── */
+.cdropdown-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cdropdown-icon {
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.cdropdown-chevron {
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.cdropdown-chevron-open {
+  transform: rotate(180deg);
+}
+
+.cdropdown-trigger:hover .cdropdown-chevron {
+  color: #2c5364;
+}
+
+/* ── Menu ────────────────────────────────────────────────── */
+.cdropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  z-index: 11000;
+  padding: 6px;
+  animation: cdropdownSlideIn 0.18s ease-out;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+.cdropdown-menu-portal {
+  z-index: 11000;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 300px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+/* ── Search Bar ─────────────────────────────────────────── */
+.cdropdown-search-wrap {
+  padding: 8px 10px;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cdropdown-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.cdropdown-search-icon {
+  position: absolute;
+  left: 10px;
+  color: #9ca3af;
+  pointer-events: none;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.cdropdown-search-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 28px 0 34px !important;
+  background: #f8fafc !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  font-family: var(--font-family);
+  font-size: 13px !important;
+  color: #0f172a !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+.cdropdown-search-input:focus {
+  background: #ffffff !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+.cdropdown-search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  z-index: 2;
+}
+
+.cdropdown-search-clear:hover {
+  color: #374151;
+}
+
+.cdropdown-list-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.cdropdown-list-container.has-virtual-list {
+  overflow-y: hidden !important;
+  padding: 6px 0;
+}
+
+.cdropdown-list-container::-webkit-scrollbar,
+.virtual-list-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.cdropdown-list-container::-webkit-scrollbar-track,
+.virtual-list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cdropdown-list-container::-webkit-scrollbar-thumb,
+.virtual-list-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.cdropdown-list-container::-webkit-scrollbar-thumb:hover,
+.virtual-list-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.cdropdown-menu-filter-portal {
+  animation: cdropdownSlideIn 0.18s ease-out;
+}
+
+@keyframes cdropdownSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Menu Item ───────────────────────────────────────────── */
+.cdropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #374151;
+  transition: background 0.15s, color 0.15s;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+/* Form dropdowns wrap long labels instead of clipping them */
+.cdropdown-menu-form-portal .cdropdown-item {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.cdropdown-item:hover {
+  background: #f0f4f8;
+  color: #1a2332;
+}
+
+.cdropdown-item-active {
+  background: #eef4fa;
+  color: #2c5364;
+  font-weight: 600;
+}
+
+.cdropdown-item:not(:last-child) {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.cdropdown-item-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Multi-select checkbox indicator */
+.cdropdown-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 4px;
+  background: #fff;
+  color: #fff;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.cdropdown-check.checked {
+  background: #2c5364;
+  border-color: #2c5364;
+}
+
+/* Footer row for multi-select (clear action) */
+.cdropdown-menu-footer {
+  padding: 8px 10px;
+  border-top: 1px solid #f3f4f6;
+  text-align: right;
+}
+
+.cdropdown-clear-btn {
+  border: none;
+  background: transparent;
+  color: #dc2626;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.cdropdown-clear-btn:hover {
+  text-decoration: underline;
+}
+
+/* Empty state message (shown when the options list is empty) */
+.cdropdown-empty {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+.cdropdown-menu::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.cdropdown-menu::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.cdropdown-menu::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.cdropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Sizes
+   ═══════════════════════════════════════════════════════════ */
+
+/* Small — page-size, inline */
+.cdropdown-sm .cdropdown-trigger {
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+.cdropdown-sm .cdropdown-item {
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+/* Medium — filter, form (default) */
+.cdropdown-md .cdropdown-trigger {
+  padding: 8px 14px;
+  font-size: 12px;
+  width: 160px;
+}
+
+.cdropdown-form.cdropdown-md .cdropdown-trigger {
+  width: 100%;
+}
+
+/* Large — custom rich dropdown */
+.cdropdown-lg .cdropdown-trigger {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.cdropdown-lg .cdropdown-item {
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Variants
+   ═══════════════════════════════════════════════════════════ */
+
+/* Filter — compact, used in filter bars */
+.cdropdown-filter .cdropdown-trigger {
+  background: #ffffff;
+}
+
+.cdropdown-filter .cdropdown-trigger:hover {
+  background: #f8fafb;
+}
+
+/* Form — full-width, used in forms/modals */
+.cdropdown-form {
+  width: 100%;
+  max-width: none;
+}
+
+.cdropdown-form .cdropdown-trigger {
+  width: 100%;
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.cdropdown-form .cdropdown-trigger:hover {
+  background: #ffffff;
+}
+
+/* Page-size — tiny pagination selector */
+.cdropdown-page .cdropdown-trigger {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+/* Portal menu for form variant — rendered on document.body to avoid overflow
+   clipping. Must sit above modal overlays (e.g. .bm-overlay at 9000) so the
+   menu never renders hidden behind a modal. */
+.cdropdown-menu-form-portal {
+  z-index: 9990;
+  padding: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  animation: cdropdownSlideIn 0.18s ease-out;
+  box-sizing: border-box;
+}
+
+.cdropdown-page .cdropdown-menu {
+  min-width: 80px;
+  width: auto;
+}
+
+/* Portal menu for page variant — rendered on document.body to avoid overflow clipping */
+.cdropdown-menu-page-portal {
+  z-index: 1060;
+  top: auto;
+  min-width: 80px;
+  width: auto;
+  padding: 4px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  animation: cdropdownSlideInPage 0.18s ease-out;
+  box-sizing: border-box;
+}
+
+.cdropdown-menu-page-portal .cdropdown-item {
+  padding: 6px 10px;
+  font-size: 11px;
+  justify-content: center;
+}
+
+@keyframes cdropdownSlideInPage {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+/* Inline — compact table-cell status dropdown */
+.cdropdown-inline {
+  max-width: 130px;
+  width: auto;
+  display: inline-flex;
+}
+
+.cdropdown-inline .cdropdown-trigger {
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 6px;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.cdropdown-inline.cdropdown-open .cdropdown-trigger,
+.cdropdown-inline .cdropdown-trigger:hover,
+.cdropdown-inline .cdropdown-trigger:focus {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.cdropdown-inline .cdropdown-trigger {
+  justify-content: center;
+  gap: 4px;
+  min-height: 24px;
+  font-weight: 600;
+  transition: none;
+}
+
+/* Disable outer wrapper backgrounds for inline status dropdowns */
+.cdropdown-inline.ls-pending,
+.cdropdown-inline.ls-contact,
+.cdropdown-inline.ls-interested,
+.cdropdown-inline.ls-completed,
+.cdropdown-inline.ls-lost {
+  background: transparent !important;
+}
+
+/* Status-specific background and text colors (permanently shown, no hover changes) */
+.cdropdown-inline.ls-pending .cdropdown-trigger,
+.cdropdown-inline.ls-pending .cdropdown-trigger:hover,
+.cdropdown-inline.ls-pending.cdropdown-open .cdropdown-trigger { background: #f3f4f6 !important; color: #4b5563 !important; }
+
+.cdropdown-inline.ls-contact .cdropdown-trigger,
+.cdropdown-inline.ls-contact .cdropdown-trigger:hover,
+.cdropdown-inline.ls-contact.cdropdown-open .cdropdown-trigger { background: #dbeafe !important; color: #1d4ed8 !important; }
+
+.cdropdown-inline.ls-interested .cdropdown-trigger,
+.cdropdown-inline.ls-interested .cdropdown-trigger:hover,
+.cdropdown-inline.ls-interested.cdropdown-open .cdropdown-trigger { background: #e0e7ff !important; color: #4338ca !important; }
+
+.cdropdown-inline.ls-completed .cdropdown-trigger,
+.cdropdown-inline.ls-completed .cdropdown-trigger:hover,
+.cdropdown-inline.ls-completed.cdropdown-open .cdropdown-trigger { background: #d1fae5 !important; color: #065f46 !important; }
+
+.cdropdown-inline.ls-lost .cdropdown-trigger,
+.cdropdown-inline.ls-lost .cdropdown-trigger:hover,
+.cdropdown-inline.ls-lost.cdropdown-open .cdropdown-trigger { background: #fee2e2 !important; color: #dc2626 !important; }
+
+.cdropdown-inline.ls-pending .cdropdown-chevron { color: #4b5563 !important; }
+.cdropdown-inline.ls-contact .cdropdown-chevron { color: #1d4ed8 !important; }
+.cdropdown-inline.ls-interested .cdropdown-chevron { color: #4338ca !important; }
+.cdropdown-inline.ls-completed .cdropdown-chevron { color: #065f46 !important; }
+.cdropdown-inline.ls-lost .cdropdown-chevron { color: #dc2626 !important; }
+
+/* Default fallback for non-status inline dropdowns (permanently shown) */
+.cdropdown-inline:not(.ls-pending):not(.ls-contact):not(.ls-interested):not(.ls-completed):not(.ls-lost) .cdropdown-trigger,
+.cdropdown-inline:not(.ls-pending):not(.ls-contact):not(.ls-interested):not(.ls-completed):not(.ls-lost) .cdropdown-trigger:hover,
+.cdropdown-inline:not(.ls-pending):not(.ls-contact):not(.ls-interested):not(.ls-completed):not(.ls-lost).cdropdown-open .cdropdown-trigger {
+  background: #f3f4f6 !important;
+  color: #1a2332 !important;
+}
+.cdropdown-inline:not(.ls-pending):not(.ls-contact):not(.ls-interested):not(.ls-completed):not(.ls-lost) .cdropdown-chevron {
+  color: #9ca3af !important;
+}
+
+.cdropdown-inline .cdropdown-chevron {
+  width: 12px;
+  height: 12px;
+}
+
+.cdropdown-inline .cdropdown-text {
+  text-align: center;
+  flex: none;
+}
+
+.cdropdown-inline .cdropdown-menu {
+  z-index: 1060;
+  min-width: 120px;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px;
+}
+
+/* Portal menu for inline variant — rendered on document.body to avoid overflow clipping */
+.cdropdown-menu-inline-portal {
+  z-index: 1060;
+  min-width: 120px;
+  width: auto;
+  padding: 4px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  animation: cdropdownSlideInInline 0.18s ease-out;
+  box-sizing: border-box;
+}
+
+.cdropdown-menu-inline-portal .cdropdown-item {
+  padding: 6px 10px;
+  font-size: 11px;
+  justify-content: center;
+}
+
+@keyframes cdropdownSlideInInline {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.cdropdown-inline .cdropdown-item {
+  padding: 6px 10px;
+  font-size: 11px;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}

@@ -1,0 +1,1172 @@
+/* =========================================================
+   TECHNICIAN MANAGEMENT MODULE STYLES
+   Technician list, directory, performance, daily reports,
+   task overview, locations, and technician profile views.
+   ========================================================= */
+@import './TechnicianCommon.css';
+
+/* ========== BREADCRUMB ========== */
+.tm-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.tm-breadcrumb-active {
+  color: #2c5364;
+  font-weight: 600;
+}
+
+/* ========== SECTION TABS ========== */
+.tm-section-tabs {
+  display: flex;
+  gap: 4px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.tm-section-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: var(--font-family);
+}
+
+.tm-section-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.tm-section-btn.active {
+  background: #2c5364;
+  color: #ffffff;
+}
+
+/* ========== SECTION TITLE ========== */
+.tm-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2332;
+  margin: 0;
+}
+
+/* ========== LOCATION SECTION ========== */
+.tm-location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tm-loc-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  cursor: pointer;
+  position: relative;
+}
+
+.tm-loc-status-bar {
+  width: 5px;
+  flex-shrink: 0;
+}
+
+.tm-loc-status-bar.online {
+  background: linear-gradient(180deg, #22c55e, #16a34a);
+}
+
+
+
+.tm-loc-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.tm-loc-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+.tm-loc-card:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.tm-loc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tm-loc-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  color: #0369a1;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  border: 2px solid #bae6fd;
+}
+
+.tm-loc-card.online .tm-loc-avatar {
+  background: linear-gradient(135deg, #dcfce7, #f0fdf4);
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.tm-loc-card.offline .tm-loc-avatar {
+  background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+  color: #475569;
+  border-color: #e2e8f0;
+}
+
+.tm-loc-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tm-loc-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2332;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.tm-loc-info span {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.tm-loc-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.tm-loc-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+
+.tm-loc-pulse.live {
+  background: #22c55e;
+  animation: tm-pulse 2s infinite;
+}
+
+@keyframes tm-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.tm-loc-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.tm-loc-badge.online {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.tm-loc-badge.offline {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.tm-loc-coords {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tm-loc-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+  transition: background 0.15s;
+}
+
+.tm-loc-row:hover {
+  background: #f1f5f9;
+}
+
+.tm-loc-row:last-child {
+  border-bottom: none;
+}
+
+.tm-loc-icon-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tm-loc-icon-wrap.lat {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.tm-loc-icon-wrap.lng {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.tm-loc-icon-wrap.time {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.tm-loc-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.tm-loc-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tm-loc-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  font-family: var(--font-family);
+}
+
+.tm-loc-address .tm-loc-value {
+  line-height: 1.4;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.tm-loc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  color: #b0b8c4;
+  font-size: 13px;
+  font-style: italic;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px dashed #e2e8f0;
+}
+
+.tm-loc-empty svg {
+  opacity: 0.4;
+}
+
+.tm-loc-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.tm-loc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  background: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tm-loc-btn:hover {
+  background: #2c5364;
+  color: #ffffff;
+  border-color: #2c5364;
+  box-shadow: 0 2px 8px rgba(44, 83, 100, 0.25);
+}
+
+.tm-loc-btn:active {
+  transform: scale(0.97);
+}
+
+/* ========== LOCATION MODAL MAP ========== */
+.tm-location-map {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tm-location-map .leaflet-container {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  z-index: 0;
+}
+
+.tm-location-map-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.tm-location-map-hint::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  flex-shrink: 0;
+}
+
+.tm-location-map-hint.found {
+  color: #15803d;
+}
+
+.tm-location-map-hint.found::before {
+  background: #22c55e;
+  animation: tm-pulse 2s infinite;
+}
+
+.tm-address-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  min-height: 34px;
+}
+
+.tm-address-box.has-address {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.tm-address-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tm-address-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* ========== REPORTS SECTION ========== */
+.tm-report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.tm-report-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #2c5364;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.tm-report-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-color: #d1d5db;
+}
+
+.tm-report-tech {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+.tm-report-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tm-report-customer {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.tm-report-date {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.tm-report-hours {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 2px 10px;
+  border-radius: 6px;
+}
+
+.tm-report-job {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  padding: 6px 10px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.tm-report-summary {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tm-report-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 6px;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* ========== PERFORMANCE TABLE ========== */
+.tm-perf-table-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* ========== PERFORMANCE REPORT VIEW ========== */
+.tm-perf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tm-perf-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 3px solid #d1d5db;
+}
+
+.tm-pc-green { border-left-color: #16a34a; background: #f0fdf4; }
+.tm-pc-yellow { border-left-color: #ca8a04; background: #fefce8; }
+.tm-pc-blue { border-left-color: #2563eb; background: #eff6ff; }
+.tm-pc-purple { border-left-color: #9333ea; background: #faf5ff; }
+
+.tm-perf-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tm-perf-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+.tm-perf-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tm-perf-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tm-perf-bar-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.tm-perf-bar-track {
+  flex: 1;
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tm-perf-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2c5364, #4a7a8a);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.tm-perf-bar-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2332;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ========== CHARTS ========== */
+.tm-charts {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.tm-chart-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 16px 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.tm-chart-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.tm-chart-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tm-chart-wide {
+  grid-column: auto;
+}
+
+/* =========================================================
+   TECHNICIAN LIST / DIRECTORY
+   ========================================================= */
+
+.tm-tech-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tm-tech-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eef4f8;
+  color: #2c5364;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tm-tech-avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #eef4f8;
+  color: #2c5364;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tm-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tm-skill-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+.tm-skill-more {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.tm-status-inactive {
+  background: #fef2f2;
+  color: #9ca3af;
+}
+
+/* Skill Checkboxes */
+.tm-skill-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tm-skill-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.tm-skill-checkbox:hover {
+  border-color: #2c5364;
+}
+
+.tm-skill-checkbox.checked {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.tm-skill-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* View Technician Modal */
+.tm-tech-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tm-tech-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tm-tech-profile-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+.tm-tech-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tm-tech-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tm-tech-detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tm-tech-perf-summary {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.tm-tech-perf-summary h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+/* Technician History */
+.tm-history-section {
+  margin-bottom: 20px;
+}
+
+.tm-history-section h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2332;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tm-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tm-history-item {
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tm-history-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tm-history-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
+}
+
+.tm-history-item-date {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.tm-history-empty {
+  font-size: 13px;
+  color: #9ca3af;
+  font-style: italic;
+  margin: 0;
+  padding: 12px 0;
+}
+
+/* =========================================================
+   FORM PAGE (Technician Add/Edit)
+   ========================================================= */
+.tm-calculated-field {
+  display: flex;
+  align-items: center;
+  padding: 9px 12px;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+  min-height: 38px;
+}
+
+.tm-calculated-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2c5364;
+}
+
+/* Upload zone */
+.tm-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 20px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  background: #fafbfc;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tm-upload-zone:hover {
+  border-color: #2c5364;
+  background: #f0f4f8;
+}
+
+.tm-upload-zone span {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.tm-upload-hint {
+  font-size: 11px !important;
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+}
+
+/* File preview */
+.tm-file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.tm-file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tm-file-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a2332;
+}
+
+.tm-file-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tm-file-replace,
+.tm-file-remove {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tm-file-replace {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.tm-file-replace:hover {
+  background: #dbeafe;
+}
+
+.tm-file-remove {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.tm-file-remove:hover {
+  background: #fee2e2;
+}
+
+/* Photos grid */
+.tm-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.tm-photo-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fafbfc;
+  position: relative;
+}
+
+.tm-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.tm-photo-name {
+  font-size: 11px;
+  color: #374151;
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.3;
+  max-height: 2.6em;
+  overflow: hidden;
+}
+
+.tm-photo-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #fee2e2;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #dc2626;
+  transition: all 0.15s;
+  opacity: 0;
+}
+
+.tm-photo-thumb:hover .tm-photo-remove {
+  opacity: 1;
+}
+
+.tm-photo-remove:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.tm-photo-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  background: #fafbfc;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 120px;
+}
+
+.tm-photo-add:hover {
+  border-color: #2c5364;
+  background: #f0f4f8;
+}
+
+.tm-photo-add span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+/* ========== TECHNICIAN MANAGEMENT RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* ── Clickable technician name (opens the full Technician Details modal) ── */
+.tm-tech-name-cell {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  padding: 4px 8px;
+  margin: -4px -8px;
+}
+
+.tm-tech-name-cell:hover {
+  background: #eef2ff;
+}
+
+.tm-tech-name-cell:hover span {
+  color: #4f46e5;
+}
+
+/* ── Technician Details modal: daily / monthly / overall range filter ── */
+.tm-detail-filter-tabs {
+  display: inline-flex;
+  gap: 4px;
+  background: #f3f4f6;
+  padding: 4px;
+  border-radius: 10px;
+  margin: 16px 0 20px;
+}
+
+.tm-detail-filter-btn {
+  padding: 6px 18px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tm-detail-filter-btn:hover {
+  color: #4f46e5;
+}
+
+.tm-detail-filter-btn.active {
+  background: #ffffff;
+  color: #4f46e5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

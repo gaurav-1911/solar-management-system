@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Skeleton & Loading UI Design System
+   ========================================================================== */
+
+/* Shimmer Keyframe Animation */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #e2e8f0;
+  background-image: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f1f5f9 20%,
+    #e2e8f0 40%,
+    #e2e8f0 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+/* 1. Full Page Skeleton Loader */
+.page-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.page-skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.page-skeleton-title {
+  width: 220px;
+  height: 28px;
+}
+
+.page-skeleton-btn {
+  width: 130px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* 2. KPI / Stat Cards Skeleton */
+.card-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.card-skeleton-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-skeleton-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.card-skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-skeleton-label {
+  width: 70%;
+  height: 14px;
+}
+
+.card-skeleton-val {
+  width: 45%;
+  height: 24px;
+}
+
+/* 3. Table Skeleton Loader */
+.table-skeleton-wrap {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.table-skeleton-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 16px;
+}
+
+.table-skeleton-row:last-child {
+  border-bottom: none;
+}
+
+.table-skeleton-cell {
+  height: 16px;
+  border-radius: 4px;
+}
+
+.table-skeleton-cell-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* 4. Small Inline Search / Filter Spinner */
+.inline-search-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e2e8f0;
+  border-top-color: #0b4f4c;
+  border-radius: 50%;
+  animation: inline-spinner-rotate 0.75s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes inline-spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 5. Pagination Row Loader Overlay */
+.pagination-loader-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #0b4f4c;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #f0fdf4;
+}
+
+.pagination-loader-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0b4f4c;
+  animation: pagination-dot-pulse 1.2s infinite ease-in-out alternate;
+}
+
+@keyframes pagination-dot-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

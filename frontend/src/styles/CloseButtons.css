@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Global Modal Header Close (X) Button Theme
+   Reference: Lead Management modal close button (.lm-modal-close)
+
+     - transparent background, gray (#9ca3af) icon
+     - uniform 28x28px hit area  (20px icon + 4px padding, matching Lead)
+     - 6px border-radius
+     - hover: #f3f4f6 background + #374151 icon
+
+   Applied to every view / add / edit modal header X button across all
+   modules so height, width and hover are identical everywhere.
+   `!important` is deliberate: this global theme wins over the per-module
+   close-button rules regardless of stylesheet import order.
+   ========================================================================== */
+
+button.lm-modal-close,
+button.cm-modal-close,
+button.tm-modal-close,
+button.sg-modal-close,
+button.sd-modal-close,
+button.ss-modal-close,
+button.qs-modal-close,
+button.pp-modal-close,
+button.pa-modal-close,
+button.dp-modal-close,
+button.bm-modal-close,
+button.im-modal-close,
+button.inv-modal-close,
+button.amc-modal-close,
+button.am-modal-close,
+button.wm-modal-close,
+button.mm-modal__close,
+button.ts-modal__close,
+button.modal__close,
+button.modal-close-btn,
+button.product-form-close,
+button.product-spec-panel-close,
+button.vendor-form-close,
+button.shared-confirm__close-btn,
+button.fd-close,
+[class*="modal"] button[aria-label*="Close"]:not(.shared-toast__close):not(.toast-close) {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #9ca3af !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease !important;
+}
+
+/* Normalize the inner X icon to the same 20x20px size as the Lead page */
+button.lm-modal-close svg,
+button.cm-modal-close svg,
+button.tm-modal-close svg,
+button.sg-modal-close svg,
+button.sd-modal-close svg,
+button.ss-modal-close svg,
+button.qs-modal-close svg,
+button.pp-modal-close svg,
+button.pa-modal-close svg,
+button.dp-modal-close svg,
+button.bm-modal-close svg,
+button.im-modal-close svg,
+button.inv-modal-close svg,
+button.amc-modal-close svg,
+button.am-modal-close svg,
+button.wm-modal-close svg,
+button.mm-modal__close svg,
+button.ts-modal__close svg,
+button.modal__close svg,
+button.modal-close-btn svg,
+button.product-form-close svg,
+button.product-spec-panel-close svg,
+button.vendor-form-close svg,
+button.shared-confirm__close-btn svg,
+button.fd-close svg,
+[class*="modal"] button[aria-label*="Close"]:not(.shared-toast__close):not(.toast-close) svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Hover state - identical to the Lead page */
+button.lm-modal-close:hover:not(:disabled),
+button.cm-modal-close:hover:not(:disabled),
+button.tm-modal-close:hover:not(:disabled),
+button.sg-modal-close:hover:not(:disabled),
+button.sd-modal-close:hover:not(:disabled),
+button.ss-modal-close:hover:not(:disabled),
+button.qs-modal-close:hover:not(:disabled),
+button.pp-modal-close:hover:not(:disabled),
+button.pa-modal-close:hover:not(:disabled),
+button.dp-modal-close:hover:not(:disabled),
+button.bm-modal-close:hover:not(:disabled),
+button.im-modal-close:hover:not(:disabled),
+button.inv-modal-close:hover:not(:disabled),
+button.amc-modal-close:hover:not(:disabled),
+button.am-modal-close:hover:not(:disabled),
+button.wm-modal-close:hover:not(:disabled),
+button.mm-modal__close:hover:not(:disabled),
+button.ts-modal__close:hover:not(:disabled),
+button.modal__close:hover:not(:disabled),
+button.modal-close-btn:hover:not(:disabled),
+button.product-form-close:hover:not(:disabled),
+button.product-spec-panel-close:hover:not(:disabled),
+button.vendor-form-close:hover:not(:disabled),
+button.shared-confirm__close-btn:hover:not(:disabled),
+button.fd-close:hover:not(:disabled),
+[class*="modal"] button[aria-label*="Close"]:not(.shared-toast__close):not(.toast-close):hover:not(:disabled) {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+/* Disabled state - keep the disabled affordance from the originals */
+button.lm-modal-close:disabled,
+button.cm-modal-close:disabled,
+button.tm-modal-close:disabled,
+button.sg-modal-close:disabled,
+button.sd-modal-close:disabled,
+button.ss-modal-close:disabled,
+button.qs-modal-close:disabled,
+button.pp-modal-close:disabled,
+button.pa-modal-close:disabled,
+button.dp-modal-close:disabled,
+button.bm-modal-close:disabled,
+button.im-modal-close:disabled,
+button.inv-modal-close:disabled,
+button.amc-modal-close:disabled,
+button.am-modal-close:disabled,
+button.wm-modal-close:disabled,
+button.mm-modal__close:disabled,
+button.ts-modal__close:disabled,
+button.modal__close:disabled,
+button.modal-close-btn:disabled,
+button.product-form-close:disabled,
+button.product-spec-panel-close:disabled,
+button.vendor-form-close:disabled,
+button.shared-confirm__close-btn:disabled,
+button.fd-close:disabled,
+[class*="modal"] button[aria-label*="Close"]:not(.shared-toast__close):not(.toast-close):disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* ==========================================================================
+   Global Modal Footer Close Button Theme
+   Reference: Lead Management view modal footer close button (.lm-view-log-btn)
+
+     - white background, 1px #e5e7eb border, 10px radius
+     - 10px 20px padding, 13px / 600 text, #374151 color
+     - hover: #f9fafb background + #d1d5db border + soft shadow
+
+   Applied to every view modal footer "Close" button across all modules so
+   the footer close control is identical everywhere.
+   `!important` is deliberate: this global theme wins over the per-module
+   footer-button rules regardless of stylesheet import order.
+   ========================================================================== */
+
+.modal-footer-close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 10px 20px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #374151 !important;
+  background: #ffffff !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease !important;
+}
+
+.modal-footer-close:hover:not(:disabled) {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  color: #374151 !important;
+}
+
+.modal-footer-close-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 10px 24px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #ffffff !important;
+  background: #2c5364 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: all 0.15s !important;
+}
+
+.modal-footer-close-primary:hover:not(:disabled) {
+  background: #1a3a4a !important;
+  box-shadow: 0 2px 8px rgba(44, 83, 100, 0.3) !important;
+  transform: translateY(-1px) !important;
+  color: #ffffff !important;
+}
+
+.modal-footer-close svg {
+  flex-shrink: 0;
+}
+
+.modal-footer-close:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}

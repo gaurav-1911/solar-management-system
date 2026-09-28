@@ -1,0 +1,152 @@
+/* Shared SelectWithOther combobox — extracted from TestingModule (tm-* -> swo-*) */
+ 
+.swo-select-other {
+  display: block;
+  width: 100%;
+}
+ 
+.swo-combo {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+ 
+.swo-select-other .swo-combo-input {
+  width: 100%;
+  padding: 9px 12px;
+  padding-right: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1f2937;
+  background: #f9fafb;
+  outline: none;
+  font-family: inherit;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+ 
+.swo-select-other .swo-combo-input:focus,
+.swo-select-other .swo-combo-open .swo-combo-input {
+  border-color: #2c5364;
+  box-shadow: 0 0 0 3px rgba(44, 83, 100, .1);
+  background: #fff;
+}
+ 
+.swo-select-other .swo-combo-sm .swo-combo-input {
+  padding: 7px 10px;
+  padding-right: 28px;
+  font-size: 12px;
+}
+ 
+.swo-combo-chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s, color .2s;
+}
+ 
+.swo-combo-open .swo-combo-chevron {
+  transform: translateY(-50%) rotate(180deg);
+  color: #2c5364;
+}
+ 
+/* Dropdown list — rendered in a portal on document.body so it is never
+   clipped by tables or scroll containers */
+.swo-combo-menu {
+  z-index: 1100;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15), 0 4px 10px rgba(0, 0, 0, .08);
+  box-sizing: border-box;
+  padding: 6px;
+  min-width: 0;
+  max-width: calc(100vw - 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: swoComboIn .18s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+ 
+.swo-combo-menu::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+.swo-combo-menu::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 10px;
+}
+ 
+.swo-combo-menu::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+ 
+.swo-combo-menu::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+ 
+@keyframes swoComboIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ 
+.swo-combo-empty {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+}
+ 
+.swo-combo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #374151;
+  text-align: left;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  transition: background .15s, color .15s;
+}
+ 
+.swo-combo-item:hover {
+  background: #f0f4f8;
+  color: #1a2332;
+}
+ 
+.swo-combo-item-active {
+  background: #eef4fa;
+  color: #2c5364;
+  font-weight: 600;
+}
+ 
+/* The final "Other / Add Manually" hint item */
+.swo-combo-manual {
+  margin-top: 4px;
+  border-top: 1px solid #f3f4f6;
+  border-radius: 0;
+  color: #2c5364;
+  font-weight: 600;
+  padding-top: 10px;
+}
+ 
+.swo-combo-manual:hover {
+  background: #eef4fa;
+  color: #1a3b47;
+}

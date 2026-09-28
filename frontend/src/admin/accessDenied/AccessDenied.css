@@ -1,0 +1,395 @@
+/* ============================================================
+   ACCESS DENIED — Integrated Module Access Lockout Screen
+   Matches the Dashboard design system layout with Sidebar on the
+   left and Header on top.
+   ============================================================ */
+
+:root {
+  --ad-bg: #f4f7f5;
+  --ad-surface: #ffffff;
+  --ad-surface-sunken: #f8fafc;
+  --ad-ink: #12241f;
+  --ad-ink-muted: #5c6f68;
+  --ad-ink-faint: #8a9b94;
+  --ad-border: #dde5e1;
+  --ad-pine: #0b3d3a;
+  --ad-pine-strong: #082b29;
+  --ad-gold: #e8a33d;
+  --ad-danger: #c1443c;
+  --ad-danger-bg: #f8e3e1;
+  --ad-danger-border: #f0cfcb;
+}
+
+/* Content area — light background with soft brand-colored glows */
+.access-denied-content {
+  flex: 1;
+  overflow: hidden;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background:
+    radial-gradient(900px 520px at 92% -10%, rgba(232, 163, 61, 0.14), transparent 62%),
+    radial-gradient(820px 500px at -8% 112%, rgba(11, 61, 58, 0.1), transparent 62%),
+    radial-gradient(560px 420px at 50% 130%, rgba(193, 68, 60, 0.05), transparent 60%),
+    var(--ad-bg);
+}
+
+/* Subtle grid texture that fades toward the edges */
+.access-denied-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11, 61, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 61, 58, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85), transparent 72%);
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85), transparent 72%);
+  pointer-events: none;
+}
+
+/* Floating aurora orbs */
+.ad-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.ad-orb--amber {
+  width: 420px;
+  height: 420px;
+  top: -130px;
+  right: -90px;
+  background: radial-gradient(circle, rgba(232, 163, 61, 0.26), transparent 68%);
+  animation: ad-drift-amber 15s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.ad-orb--teal {
+  width: 480px;
+  height: 480px;
+  bottom: -170px;
+  left: -130px;
+  background: radial-gradient(circle, rgba(11, 61, 58, 0.14), transparent 68%);
+  animation: ad-drift-teal 17s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.ad-orb--rose {
+  width: 340px;
+  height: 340px;
+  top: 42%;
+  left: 58%;
+  background: radial-gradient(circle, rgba(193, 68, 60, 0.12), transparent 68%);
+  animation: ad-drift-rose 19s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes ad-drift-amber {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-70px, 45px) scale(1.1); }
+}
+@keyframes ad-drift-teal {
+  from { transform: translate(0, 0) scale(1.05); }
+  to   { transform: translate(60px, -55px) scale(0.94); }
+}
+@keyframes ad-drift-rose {
+  from { transform: translate(0, 0) scale(0.94); }
+  to   { transform: translate(-45px, -35px) scale(1.12); }
+}
+
+/* ======================= CARD ======================= */
+
+.ad-card {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+  border-radius: 18px;
+  padding: 28px 44px 32px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(11, 61, 58, 0.06),
+    0 18px 48px -16px rgba(11, 61, 58, 0.22);
+  animation: ad-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ad-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--ad-gold), var(--ad-pine), transparent);
+}
+
+@keyframes ad-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ad-icon-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-icon-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 90deg,
+    rgba(232, 163, 61, 0.2),
+    rgba(11, 61, 58, 0.12),
+    rgba(193, 68, 60, 0.18),
+    rgba(232, 163, 61, 0.2)
+  );
+}
+
+.ad-icon-ring {
+  position: absolute;
+  border-radius: 50%;
+}
+.ad-icon-ring--outer {
+  inset: 0;
+  border: 1.5px dashed rgba(193, 68, 60, 0.35);
+  animation: ad-spin 18s linear infinite;
+}
+.ad-icon-ring--inner {
+  inset: 9px;
+  background: radial-gradient(circle at 30% 25%, rgba(193, 68, 60, 0.14), rgba(193, 68, 60, 0.04) 60%);
+  border: 1px solid rgba(193, 68, 60, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 26px rgba(193, 68, 60, 0.12),
+    inset 0 0 16px rgba(193, 68, 60, 0.1);
+}
+
+.ad-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c1443c, #a5342d);
+  box-shadow: 0 8px 18px -5px rgba(193, 68, 60, 0.5);
+  animation: ad-float 3.4s ease-in-out infinite;
+}
+
+@keyframes ad-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ad-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+.ad-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ad-danger);
+  background: var(--ad-danger-bg);
+  border: 1px solid var(--ad-danger-border);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+}
+
+.ad-title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--ad-ink);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .ad-title {
+    background: linear-gradient(120deg, var(--ad-ink) 30%, var(--ad-pine) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.ad-message {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ad-ink-muted);
+  margin: 0 auto;
+  max-width: 380px;
+}
+
+.ad-submessage {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ad-ink-faint);
+  margin: 6px auto 0;
+}
+
+.ad-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ad-border), transparent);
+  margin: 22px 0 18px;
+}
+
+.ad-account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: var(--ad-surface-sunken);
+  border: 1px solid #e5eaef;
+  border-radius: 14px;
+  padding: 11px 13px;
+}
+
+.ad-avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--ad-pine), var(--ad-pine-strong));
+  box-shadow: 0 6px 16px -4px rgba(11, 61, 58, 0.4);
+}
+
+.ad-account-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.ad-account-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ad-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ad-account-email {
+  font-size: 12px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ad-account-role {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ad-pine);
+  background: #e8f0ee;
+  border: 1px solid #cfe0dc;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.ad-hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ad-ink-faint);
+  margin: 16px 0 0;
+}
+.ad-hint span {
+  color: var(--ad-pine);
+  font-weight: 600;
+}
+
+.ad-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.ad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.ad-btn--primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--ad-pine), var(--ad-pine-strong));
+  box-shadow: 0 8px 18px -6px rgba(11, 61, 58, 0.45);
+}
+.ad-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -8px rgba(11, 61, 58, 0.5);
+}
+.ad-btn--primary:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-card,
+  .ad-icon,
+  .ad-icon-ring--outer,
+  .ad-orb {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Standardized Empty State UI
+   ========================================================================== */
+
+.table-empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  min-height: 220px;
+  text-align: center;
+  color: #6b7280;
+  width: 100%;
+  position: sticky;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.table-empty-icon {
+  margin-bottom: 12px;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-empty-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 4px 0;
+}
+
+.table-empty-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.table-empty-action {
+  margin-top: 16px;
+}

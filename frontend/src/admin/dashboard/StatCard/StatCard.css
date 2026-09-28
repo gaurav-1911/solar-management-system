@@ -1,0 +1,526 @@
+/* ==========================================================================
+   StatCard — Universal KPI metric cards (exactly 4-per-row layout)
+   Standardized styling for top borders, rounded corners, pastel icons, and
+   responsive 4-column grid layout across ALL module pages.
+   ========================================================================== */
+
+/* Universal grid container for all module stat sections — forces 4 cards in 1 row with compact top/bottom spacing */
+.stats-grid,
+.stat-card-grid,
+.usr-stats-grid,
+.usr-stats,
+.lm-list-stats-grid,
+.lm-list-stats,
+.cm-stats-grid,
+.cm-stats,
+.fm-stats-grid,
+.fm-stats,
+.qs-stats-grid,
+.qs-stats,
+.ss-stats-grid,
+.ss-stats,
+.sd-stats-grid,
+.sd-stats,
+.pa-stats-grid,
+.pa-stats,
+.im-stats-grid,
+.im-stats,
+.tm-stats-grid,
+.tm-stats,
+.pp-stats-grid,
+.pp-stats,
+.ch-stats-grid,
+.ch-stats,
+.dp-stats-grid,
+.dp-stats,
+.tech-stats-grid,
+.tech-stats,
+.pc-stats-grid,
+.inv-stats-grid,
+.inv-stats,
+.vm-stats-grid,
+.vendor-stats,
+.wm-stats-grid,
+.wm-stats,
+.billing-stats-grid,
+.billing-stats,
+.bm-stats,
+.pay-stats-grid,
+.pay-stats,
+.pm-stats,
+.subsidy-stats-grid,
+.subsidy-stats,
+.sg-stats,
+.maint-stats-grid,
+.maint-stats,
+.mm-stats,
+.ticket-stats-grid,
+.ticket-stats,
+.ts-stats,
+.amc-stats-grid,
+.amc-stats,
+.warranty-stats-grid,
+.warranty-stats,
+.doc-stats-grid,
+.doc-stats,
+.product-stats,
+.product-stats-grid,
+.wh-stats,
+.wh-stats-grid,
+.rp-stats-grid,
+.rp-stats,
+.set-stats-grid,
+.set-stats,
+.an-stats-grid,
+.an-stats,
+.sm-stats-grid,
+.sm-stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Page headers and banners directly above stat cards — standardized compact bottom margin */
+.usr-header,
+.sd-header,
+.ss-header,
+.pa-header,
+.im-header,
+.tm-header,
+.ch-header,
+.pp-header,
+.dp-header,
+.inv-header,
+.vendor-header,
+.wh-header,
+.sg-header,
+.ts-header,
+.amc-header,
+.mm-header,
+.product-header,
+.set-header,
+.bm-header,
+.pm-header,
+.wm-header,
+.doc-header,
+.lm-header,
+.cm-header,
+.fm-header,
+.qs-header,
+.tech-header,
+.rp-header,
+.an-header,
+.sm-header,
+.lm-overdue-banner,
+.overdue-banner,
+.alert-banner {
+  margin-bottom: 0 !important;
+}
+
+/* Elements directly below stat cards (toolbars, tabs, filter bars, chart rows, table cards) — eliminate duplicate top margins */
+.usr-toolbar,
+.usr-tabs,
+.usr-view-tabs,
+.usr-filter-bar,
+.usr-card,
+.usr-content,
+.sd-toolbar,
+.sd-tabs,
+.sd-filter-bar,
+.sd-card,
+.sd-content,
+.ss-toolbar,
+.ss-tabs,
+.ss-filter-bar,
+.ss-card,
+.ss-content,
+.pa-toolbar,
+.pa-tabs,
+.pa-filter-bar,
+.pa-card,
+.pa-content,
+.im-toolbar,
+.im-tabs,
+.im-filter-bar,
+.im-card,
+.im-content,
+.tm-toolbar,
+.tm-tabs,
+.tm-filter-bar,
+.tm-card,
+.tm-content,
+.ch-toolbar,
+.ch-tabs,
+.ch-filter-bar,
+.ch-card,
+.ch-content,
+.pp-toolbar,
+.pp-tabs,
+.pp-filter-bar,
+.pp-card,
+.pp-content,
+.dp-toolbar,
+.dp-tabs,
+.dp-filter-bar,
+.dp-card,
+.dp-content,
+.inv-filter-bar,
+.inv-toolbar,
+.inv-tabs,
+.inv-card,
+.inv-content,
+.inv-search-bar,
+.vendor-tabs,
+.vendor-filter-bar,
+.vendor-toolbar,
+.vendor-card,
+.vendor-content,
+.vm-tabs,
+.vm-filter-bar,
+.wh-filter-bar,
+.wh-toolbar,
+.wh-tabs,
+.wh-card,
+.wh-content,
+.sg-toolbar,
+.sg-tabs,
+.sg-filter-bar,
+.sg-card,
+.sg-content,
+.subsidy-tabs,
+.ts-toolbar,
+.ts-tabs,
+.ts-filter-bar,
+.ts-card,
+.ts-content,
+.ticket-tabs,
+.ticket-filter-bar,
+.amc-filter-bar,
+.amc-toolbar,
+.amc-tabs,
+.amc-card,
+.amc-content,
+.mm-tabs,
+.mm-toolbar,
+.mm-filter-bar,
+.mm-card,
+.mm-content,
+.maint-tabs,
+.product-tabs,
+.product-card,
+.product-content,
+.product-search-bar,
+.pc-toolbar,
+.pc-filter-bar,
+.set-tabs,
+.set-toolbar,
+.set-card,
+.set-content,
+.bm-toolbar,
+.bm-tabs,
+.billing-filter-bar,
+.billing-card,
+.pm-toolbar,
+.pm-tabs,
+.pay-filter-bar,
+.pay-card,
+.wm-toolbar,
+.wm-tabs,
+.wm-filter-bar,
+.wm-card,
+.doc-toolbar,
+.doc-tabs,
+.doc-filter-bar,
+.doc-card,
+.lm-view-tabs,
+.lm-list-tabs,
+.lm-tabs,
+.lm-toolbar,
+.lm-filter-bar,
+.lm-card,
+.cm-toolbar,
+.cm-tabs,
+.cm-filter-bar,
+.cm-card,
+.fm-toolbar,
+.fm-tabs,
+.fm-filter-bar,
+.qs-toolbar,
+.qs-tabs,
+.qs-filter-bar,
+.tech-tabs,
+.tech-toolbar,
+.tech-filter-bar,
+.tech-card,
+.warranty-tabs,
+.doc-tabs,
+.rp-toolbar,
+.rp-tabs,
+.an-toolbar,
+.an-tabs,
+.sm-toolbar,
+.sm-tabs,
+.charts-row,
+.charts-row--equal,
+.dashboard-grid,
+.dash-charts {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .stats-grid,
+  .stat-card-grid,
+  .usr-stats-grid,
+  .usr-stats,
+  .lm-list-stats-grid,
+  .lm-list-stats,
+  .cm-stats-grid,
+  .cm-stats,
+  .qs-stats-grid,
+  .ss-stats-grid,
+  .ss-stats,
+  .sd-stats-grid,
+  .sd-stats,
+  .pa-stats-grid,
+  .pa-stats,
+  .im-stats-grid,
+  .im-stats,
+  .tm-stats-grid,
+  .tm-stats,
+  .pp-stats-grid,
+  .pp-stats,
+  .ch-stats-grid,
+  .ch-stats,
+  .dp-stats-grid,
+  .dp-stats,
+  .tech-stats-grid,
+  .tech-stats,
+  .pc-stats-grid,
+  .inv-stats-grid,
+  .inv-stats,
+  .vm-stats-grid,
+  .vendor-stats,
+  .wm-stats-grid,
+  .wm-stats,
+  .billing-stats-grid,
+  .billing-stats,
+  .bm-stats,
+  .pay-stats-grid,
+  .pay-stats,
+  .pm-stats,
+  .subsidy-stats-grid,
+  .subsidy-stats,
+  .sg-stats,
+  .maint-stats-grid,
+  .maint-stats,
+  .mm-stats,
+  .ticket-stats-grid,
+  .ticket-stats,
+  .ts-stats,
+  .amc-stats-grid,
+  .amc-stats,
+  .warranty-stats-grid,
+  .warranty-stats,
+  .doc-stats-grid,
+  .doc-stats,
+  .product-stats,
+  .product-stats-grid,
+  .wh-stats,
+  .wh-stats-grid,
+  .rp-stats-grid,
+  .set-stats-grid,
+  .set-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid,
+  .stat-card-grid,
+  .usr-stats-grid,
+  .usr-stats,
+  .lm-list-stats-grid,
+  .lm-list-stats,
+  .cm-stats-grid,
+  .cm-stats,
+  .qs-stats-grid,
+  .ss-stats-grid,
+  .ss-stats,
+  .sd-stats-grid,
+  .sd-stats,
+  .pa-stats-grid,
+  .pa-stats,
+  .im-stats-grid,
+  .im-stats,
+  .tm-stats-grid,
+  .tm-stats,
+  .pp-stats-grid,
+  .pp-stats,
+  .ch-stats-grid,
+  .ch-stats,
+  .dp-stats-grid,
+  .dp-stats,
+  .tech-stats-grid,
+  .tech-stats,
+  .pc-stats-grid,
+  .inv-stats-grid,
+  .inv-stats,
+  .vm-stats-grid,
+  .vendor-stats,
+  .wm-stats-grid,
+  .wm-stats,
+  .billing-stats-grid,
+  .billing-stats,
+  .bm-stats,
+  .pay-stats-grid,
+  .pay-stats,
+  .pm-stats,
+  .subsidy-stats-grid,
+  .subsidy-stats,
+  .sg-stats,
+  .maint-stats-grid,
+  .maint-stats,
+  .mm-stats,
+  .ticket-stats-grid,
+  .ticket-stats,
+  .ts-stats,
+  .amc-stats-grid,
+  .amc-stats,
+  .warranty-stats-grid,
+  .warranty-stats,
+  .doc-stats-grid,
+  .doc-stats,
+  .product-stats,
+  .product-stats-grid,
+  .wh-stats,
+  .wh-stats-grid,
+  .rp-stats-grid,
+  .set-stats-grid,
+  .set-stats {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* StatCard base container */
+.stat-card {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  border-top: 3.5px solid #0b3d3a !important;
+  transition: all 0.2s ease-in-out !important;
+  min-height: 84px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.stat-card:hover {
+  border-color: #cbd5e1 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Color theme top borders and light background gradients */
+.stat-card--blue   { border-top-color: #2563eb !important; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 65%) !important; }
+.stat-card--green  { border-top-color: #10b981 !important; background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 65%) !important; }
+.stat-card--orange { border-top-color: #f97316 !important; background: linear-gradient(135deg, #fff7ed 0%, #ffffff 65%) !important; }
+.stat-card--yellow { border-top-color: #d97706 !important; background: linear-gradient(135deg, #fffbeb 0%, #ffffff 65%) !important; }
+.stat-card--purple { border-top-color: #8b5cf6 !important; background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 65%) !important; }
+.stat-card--red    { border-top-color: #ef4444 !important; background: linear-gradient(135deg, #fef2f2 0%, #ffffff 65%) !important; }
+.stat-card--teal   { border-top-color: #0d9488 !important; background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 65%) !important; }
+.stat-card--pink   { border-top-color: #ec4899 !important; background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 65%) !important; }
+
+/* Icon badge container */
+.stat-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.stat-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Icon badge colors with soft pastel backgrounds */
+.stat-icon-blue   { background: #dbeafe !important; color: #2563eb !important; }
+.stat-icon-green  { background: #d1fae5 !important; color: #10b981 !important; }
+.stat-icon-orange { background: #ffedd5 !important; color: #f97316 !important; }
+.stat-icon-yellow { background: #fef3c7 !important; color: #d97706 !important; }
+.stat-icon-purple { background: #ede9fe !important; color: #8b5cf6 !important; }
+.stat-icon-red    { background: #fee2e2 !important; color: #ef4444 !important; }
+.stat-icon-teal   { background: #ccfbf1 !important; color: #0d9488 !important; }
+.stat-icon-pink   { background: #fce7f3 !important; color: #ec4899 !important; }
+
+/* Card Content text formatting */
+.stat-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+
+.stat-title {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.stat-value {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.stat-change {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  margin-top: 1px !important;
+}
+
+.stat-up   { color: #10b981 !important; }
+.stat-down { color: #ef4444 !important; }
+
+/* Skeleton loading animation */
+.stat-skeleton {
+  width: 76px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(226, 232, 240, 0.6) 25%, rgba(248, 250, 252, 0.95) 50%, rgba(226, 232, 240, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: statSkeletonShimmer 1.4s infinite ease-in-out;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+@keyframes statSkeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

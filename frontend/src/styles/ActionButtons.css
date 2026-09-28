@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Standardized Action Buttons (Lead Management Reference)
+   Applies consistent 32px x 32px pastel icon-button design across all modules.
+   ========================================================================== */
+
+.act-actions,
+.vendor-card-actions,
+.pa-card-actions,
+[class*="-act-actions"],
+[class*="-actions-cell"],
+[class*="-action-buttons"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.act-btn,
+.vendor-act-btn,
+.pa-action-btn,
+.cat-card-action-btn,
+.ver-action-btn,
+.usr-act-btn,
+.am-action-btn,
+[class*="-act-btn"],
+[class*="-action-btn"],
+[class*="-btn-action"] {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease-in-out !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.act-btn svg,
+.vendor-act-btn svg,
+.pa-action-btn svg,
+.cat-card-action-btn svg,
+.ver-action-btn svg,
+.usr-act-btn svg,
+.am-action-btn svg,
+[class*="-act-btn"] svg,
+[class*="-action-btn"] svg {
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+.act-btn:disabled,
+.vendor-act-btn:disabled,
+.pa-action-btn:disabled,
+[class*="-act-btn"]:disabled,
+[class*="-action-btn"]:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
+  filter: grayscale(0.35) !important;
+}
+
+.act-btn:disabled:hover,
+.vendor-act-btn:disabled:hover,
+.pa-action-btn:disabled:hover,
+[class*="-act-btn"]:disabled:hover,
+[class*="-action-btn"]:disabled:hover {
+  transform: none !important;
+}
+
+/* ── 1. View / Eye (Blue Pastel) ── */
+.act-view,
+.vendor-act-view,
+.pa-view-btn,
+[class*="-act-view"],
+[class*="-view-btn"],
+[class*="--view"] {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+.act-view:hover,
+.vendor-act-view:hover,
+.pa-view-btn:hover,
+[class*="-act-view"]:hover,
+[class*="-view-btn"]:hover,
+[class*="--view"]:hover {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 2. Edit / Pencil (Yellow/Amber Pastel) ── */
+.act-edit,
+.vendor-act-edit,
+.pa-edit-btn,
+.cat-card-action-btn.edit,
+[class*="-act-edit"],
+[class*="-edit-btn"],
+[class*="--edit"] {
+  background: #fefce8 !important;
+  color: #ca8a04 !important;
+}
+
+.act-edit:hover,
+.vendor-act-edit:hover,
+.pa-edit-btn:hover,
+.cat-card-action-btn.edit:hover,
+[class*="-act-edit"]:hover,
+[class*="-edit-btn"]:hover,
+[class*="--edit"]:hover {
+  background: #fef9c3 !important;
+  color: #a16207 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 3. Delete / Trash (Red Pastel) ── */
+.act-delete,
+.vendor-act-delete,
+.pa-delete-btn,
+.pa-reject-btn,
+.cat-card-action-btn.delete,
+[class*="-act-delete"],
+[class*="-delete-btn"],
+[class*="--delete"],
+[class*="--danger"] {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.act-delete:hover,
+.vendor-act-delete:hover,
+.pa-delete-btn:hover,
+.pa-reject-btn:hover,
+.cat-card-action-btn.delete:hover,
+[class*="-act-delete"]:hover,
+[class*="-delete-btn"]:hover,
+[class*="--delete"]:hover,
+[class*="--danger"]:hover {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 4. Convert / User Plus / Add (Emerald Green Pastel) ── */
+.act-convert,
+.act-add,
+[class*="-act-convert"],
+[class*="-convert-btn"],
+[class*="--convert"] {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+}
+
+.act-convert:hover,
+.act-add:hover,
+[class*="-act-convert"]:hover,
+[class*="-convert-btn"]:hover,
+[class*="--convert"]:hover {
+  background: #d1fae5 !important;
+  color: #047857 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 5. Download / Log / File (Green Pastel) ── */
+.act-download,
+.act-log,
+.act-approve,
+.pa-approve-btn,
+[class*="-act-download"],
+[class*="-act-log"],
+[class*="-log-btn"],
+[class*="-download-btn"],
+[class*="-approve-btn"] {
+  background: #f0fdf4 !important;
+  color: #16a34a !important;
+}
+
+.act-download:hover,
+.act-log:hover,
+.act-approve:hover,
+.pa-approve-btn:hover,
+[class*="-act-download"]:hover,
+[class*="-act-log"]:hover,
+[class*="-log-btn"]:hover,
+[class*="-download-btn"]:hover,
+[class*="-approve-btn"]:hover {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 6. Reject / Cancel (Red Pastel) ── */
+.act-reject,
+[class*="-act-reject"],
+[class*="-reject-btn"] {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.act-reject:hover,
+[class*="-act-reject"]:hover,
+[class*="-reject-btn"]:hover {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   Global Table Standardization (Lead Management Reference)
+   Applies unified table top headers and sleek bottom scrollbars
+   across all admin tables.
+   ========================================================================== */
+
+/* ── Table Container & Scrollbar ── */
+[class*="-table-wrapper"],
+[class*="-table-container"],
+[class*="-table-card"],
+[class*="-table-wrap"],
+[class*="-table-scroll"],
+.table-responsive,
+.table-container,
+.table-wrapper {
+  overflow-x: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #d1d5db transparent !important;
+}
+
+[class*="-table-wrapper"]::-webkit-scrollbar,
+[class*="-table-container"]::-webkit-scrollbar,
+[class*="-table-card"]::-webkit-scrollbar,
+[class*="-table-wrap"]::-webkit-scrollbar,
+[class*="-table-scroll"]::-webkit-scrollbar,
+.table-responsive::-webkit-scrollbar,
+.table-container::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+[class*="-table-wrapper"]::-webkit-scrollbar-track,
+[class*="-table-container"]::-webkit-scrollbar-track,
+[class*="-table-card"]::-webkit-scrollbar-track,
+[class*="-table-wrap"]::-webkit-scrollbar-track,
+[class*="-table-scroll"]::-webkit-scrollbar-track,
+.table-responsive::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+[class*="-table-wrapper"]::-webkit-scrollbar-thumb,
+[class*="-table-container"]::-webkit-scrollbar-thumb,
+[class*="-table-card"]::-webkit-scrollbar-thumb,
+[class*="-table-wrap"]::-webkit-scrollbar-thumb,
+[class*="-table-scroll"]::-webkit-scrollbar-thumb,
+.table-responsive::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #d1d5db !important;
+  border-radius: 10px !important;
+}
+
+[class*="-table-wrapper"]::-webkit-scrollbar-thumb:hover,
+[class*="-table-container"]::-webkit-scrollbar-thumb:hover,
+[class*="-table-card"]::-webkit-scrollbar-thumb:hover,
+[class*="-table-wrap"]::-webkit-scrollbar-thumb:hover,
+[class*="-table-scroll"]::-webkit-scrollbar-thumb:hover,
+.table-responsive::-webkit-scrollbar-thumb:hover,
+.table-container::-webkit-scrollbar-thumb:hover,
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af !important;
+}
+
+/* ── Universal Table Header Standardization (Lead Management Reference) ── */
+table thead th,
+[class*="-table"] thead th,
+[class*="-table"] th,
+[class*="-table-card"] th,
+[class*="-table-wrapper"] th,
+[class*="-table-wrap"] th,
+[class*="-table-container"] th {
+  text-align: left !important;
+  padding: 12px 14px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #9ca3af !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #fafbfc !important;
+  white-space: nowrap !important;
+}
+
+/* ── Universal Table Body Cells & Hover State ── */
+table tbody td,
+[class*="-table"] tbody td,
+[class*="-table"] td,
+[class*="-table-card"] td,
+[class*="-table-wrapper"] td,
+[class*="-table-wrap"] td,
+[class*="-table-container"] td {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #1a2332;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+table tbody tr:hover,
+[class*="-table"] tbody tr:hover,
+[class*="-table-card"] tbody tr:hover,
+[class*="-table-wrapper"] tbody tr:hover,
+[class*="-table-wrap"] tbody tr:hover,
+[class*="-table-container"] tbody tr:hover {
+  background: #f9fafb !important;
+}
+
+/* ── Standardized Date Filters ── */
+input[type="date"][class*="date-inline"],
+input[type="date"][class*="inline-date"] {
+  padding: 8px 12px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #1a2332 !important;
+  background-color: #ffffff !important;
+  height: 36px !important;
+  width: 140px !important;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="date"][class*="date-inline"]:hover,
+input[type="date"][class*="inline-date"]:hover {
+  border-color: #2c5364 !important;
+  background-color: #f8fafb !important;
+}
+
+input[type="date"][class*="date-inline"]:focus,
+input[type="date"][class*="inline-date"]:focus {
+  border-color: #2c5364 !important;
+  box-shadow: 0 0 0 3px rgba(44, 83, 100, 0.1) !important;
+  background-color: #ffffff !important;
+}

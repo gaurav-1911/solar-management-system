@@ -1,0 +1,71 @@
+﻿.common-btn {
+  padding: 13px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.common-btn:hover {
+  opacity: 0.9;
+}
+
+.common-btn:active {
+  transform: scale(0.98);
+}
+
+.common-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.common-btn-full {
+  width: 100%;
+}
+
+.common-btn-primary {
+  background: linear-gradient(135deg, #0f2027, #2c5364);
+  color: #ffffff;
+}
+
+.common-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1.5px solid #d1d5db;
+}
+
+.common-btn-secondary:hover {
+  background: #e5e7eb;
+  opacity: 1;
+}
+
+.common-btn-danger {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.common-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: common-spin 0.6s linear infinite;
+}
+
+.common-btn-secondary .common-spinner {
+  border-color: rgba(55, 65, 81, 0.3);
+  border-top-color: #374151;
+}
+
+@keyframes common-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

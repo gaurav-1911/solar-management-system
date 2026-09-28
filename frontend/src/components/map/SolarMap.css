@@ -1,0 +1,162 @@
+.solar-map-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.solar-map-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.solar-map-search-input-wrap input {
+  max-width: 360px;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.solar-map-search-input-wrap input:focus {
+  border-color: #2c5364;
+  box-shadow: 0 0 0 3px rgba(44, 83, 100, 0.12);
+}
+
+.solar-map-search-input-wrap input::placeholder {
+  color: #9ca3af;
+}
+
+.solar-map-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.solar-map-suggestion {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #374151;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.solar-map-suggestion:hover,
+.solar-map-suggestion.active {
+  background: #eef4f8;
+  color: #1a2332;
+}
+
+.solar-map-suggestion svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #2c5364;
+}
+
+.solar-map-suggestion-empty {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: #9ca3af;
+  cursor: default;
+}
+
+.solar-map-search button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #2c5364;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.solar-map-search button:hover:not(:disabled) {
+  background: #1f3f4d;
+}
+
+.solar-map-search button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.solar-map-search .solar-map-locate {
+  min-width: 0;
+  background: #ffffff;
+  color: #2c5364;
+  border: 1px solid #2c5364;
+  white-space: nowrap;
+}
+
+.solar-map-search .solar-map-locate:hover:not(:disabled) {
+  background: #eef4f8;
+}
+
+.solar-map-search-error {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+.solar-map-location-warning {
+  margin: 0 0 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.solar-map-accuracy-warning {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.solar-map-search-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: solar-map-spin 0.7s linear infinite;
+}
+
+@keyframes solar-map-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

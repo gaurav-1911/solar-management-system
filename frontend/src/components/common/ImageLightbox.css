@@ -1,0 +1,74 @@
+.ilb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 20, 18, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 120;
+  animation: ilbFadeIn 0.15s ease;
+}
+ 
+.ilb-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 92vw;
+  max-height: 92vh;
+}
+ 
+.ilb-img {
+  max-width: 92vw;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  animation: ilbZoomIn 0.18s ease;
+}
+ 
+.ilb-caption {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 500;
+  max-width: 80vw;
+  text-align: center;
+  word-break: break-all;
+}
+ 
+.ilb-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  z-index: 121;
+}
+ 
+.ilb-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+ 
+@keyframes ilbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+ 
+@keyframes ilbZoomIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+ 
+ 

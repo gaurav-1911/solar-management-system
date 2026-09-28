@@ -1,0 +1,45 @@
+{
+  "name": "solar",
+  "version": "1.0.0",
+  "description": "```bash\r git clone <repository-url>\r ```",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed": "node src/seed.js",
+    "seed:inventory": "node scripts/seedInventory10k.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VHITS-Full-Stack/Solar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/VHITS-Full-Stack/Solar/issues"
+  },
+  "homepage": "https://github.com/VHITS-Full-Stack/Solar#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.0",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
+    "helmet": "^8.3.0",
+    "joi": "^18.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.4",
+    "morgan": "^1.11.0",
+    "multer": "^2.2.0",
+    "nodemailer": "^9.0.3",
+    "pdfkit": "^0.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

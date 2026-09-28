@@ -1,0 +1,518 @@
+/* ========== MONITORING PAGE ========== */
+.monitoring-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ========== LIVE BANNER ========== */
+.live-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #0f2027, #2c5364);
+  border-radius: 12px;
+  padding: 14px 22px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+.live-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.live-update {
+  font-size: 12px;
+  color: #a0b4c0;
+}
+
+/* ========== METRICS GRID ========== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.metric-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 3px solid transparent;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.metric-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.metric-good {
+  border-left-color: #16a34a;
+}
+
+.metric-warning {
+  border-left-color: #ca8a04;
+}
+
+.metric-critical {
+  border-left-color: #dc2626;
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #f0fdf4;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-warning .metric-icon {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+.metric-critical .metric-icon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.metric-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-good {
+  background: #22c55e;
+}
+
+.status-warning {
+  background: #eab308;
+}
+
+.status-critical {
+  background: #ef4444;
+  animation: livePulse 1.5s infinite;
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+/* ========== MONITORING CARD ========== */
+.monitoring-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.monitoring-card .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.monitoring-card .card-top h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2332;
+  margin: 0;
+}
+
+.monitoring-card .card-badge {
+  font-size: 11px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ========== PRODUCTION TABS ========== */
+.production-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.tab-btn {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: #374151;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: #2c5364;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== CHART STATS ROW ========== */
+.chart-stats-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.chart-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chart-stat-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #5c6f68;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chart-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+.chart-stat-value.green {
+  color: #16a34a;
+}
+
+.chart-stat-value.blue {
+  color: #2563eb;
+}
+
+/* ========== MONITORING ROW ========== */
+.monitoring-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ========== EFFICIENCY ========== */
+.efficiency-summary {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 16px;
+}
+
+.eff-circle {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+.eff-circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.eff-circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eff-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #16a34a;
+  line-height: 1;
+}
+
+.eff-label {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 3px;
+}
+
+.eff-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eff-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.eff-detail-row:last-child {
+  border-bottom: none;
+}
+
+.eff-detail-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.eff-detail-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a2332;
+}
+
+.eff-detail-value.green {
+  color: #16a34a;
+}
+
+/* ========== CO2 ========== */
+.co2-summary {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 16px;
+}
+
+.co2-big-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 14px;
+  padding: 18px 24px;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.co2-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #16a34a;
+  line-height: 1;
+}
+
+.co2-unit {
+  font-size: 10px;
+  color: #16a34a;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.co2-equivalents {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.co2-equiv-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.co2-equiv-item:last-child {
+  border-bottom: none;
+}
+
+.co2-equiv-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2332;
+  display: block;
+  line-height: 1.2;
+}
+
+.co2-equiv-label {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ========== SYSTEM HEALTH ========== */
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.health-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  background: #fafbfc;
+  border-radius: 10px;
+}
+
+.health-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.health-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a2332;
+}
+
+.health-status {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.health-operational {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.health-warning {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+.health-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.health-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.health-bar-operational {
+  background: #16a34a;
+}
+
+.health-bar-warning {
+  background: #ca8a04;
+}
+
+.health-percent {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-align: right;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}

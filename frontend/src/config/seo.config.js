@@ -32,6 +32,7 @@ export const SITE_CONFIG = {
     twitter: "https://twitter.com/gauravchavda_dev"
   },
   indexNowKey: "e4d7b2a9f1c84365908271e54a3b6c8d",
+  googleSiteVerification: "JDVBRQdyrVzkb6Qhvlq_a8OJbw0RHoML1EVClCYf6pg",
   defaultOgImage: "/og-image-1200x630.png",
   defaultOgImageWebp: "/og-image-1200x630.webp",
   whatsappShareImage: "/whatsapp-share-1200x1200.png",

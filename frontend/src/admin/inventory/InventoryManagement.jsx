@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Pagination, Dropdown, ConfirmDialog, TableLoader } from "../../components/common";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { Pagination, Dropdown, ConfirmDialog, TableLoader, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
+import { useDebounce } from "../../hooks";
 import { useToast } from "../../components/common/Toast";
 import { useFormik } from "formik";
 import { inventoryAPI, vendorAPI, purchaseOrderAPI, productAPI, warehouseAPI } from "../../services/api";
@@ -115,7 +115,7 @@ const InventoryManagement = () => {
   }, [location.pathname, location.search, location.key, location.state]);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [viewMode, setViewMode] = useState("table");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [serverTotal, setServerTotal] = useState(0);
   // Summary stats computed over ALL inventory items server-side.
   const [stats, setStats] = useState({
@@ -195,11 +195,6 @@ const InventoryManagement = () => {
     fetchStats();
   }, [fetchStats]);
 
-  /* ── Debounce the search input ── */
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
 
   // Load vendors, linked products, and warehouse names for the form dropdowns
   // on mount (these are needed regardless of the current page).
@@ -527,15 +522,10 @@ const InventoryManagement = () => {
 
   return (
     <div className="inv-container">
-      <header className="inv-header">
-        <div>
-          <h1 className="inv-header-title">Inventory Management</h1>
-          <p className="inv-header-subtitle">
-            Track and manage your warehouse stock — monitor quantities, supplier
-            information, and inventory value across all categories.
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        title="Inventory Management"
+        description="Track and manage your warehouse stock — monitor quantities, supplier information, and inventory value across all categories."
+      />
 
       <div className="inv-stats-grid">
         <StatCard
@@ -565,49 +555,14 @@ const InventoryManagement = () => {
       </div>
 
       <div className="inv-filter-bar">
-        <div className="inv-search-wrap">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search inventory"
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setCurrentPage(1);
-            }}
-          />
-          {search && (
-            <button
-              className="inv-search-clear"
-              onClick={() => {
-                setSearch("");
-                setCurrentPage(1);
-              }}
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search inventory"
+          value={search}
+          onChange={(val) => {
+            setSearch(val);
+            setCurrentPage(1);
+          }}
+        />
         <Dropdown
           value={categoryFilter}
           onChange={(val) => {
@@ -1053,11 +1008,7 @@ const InventoryManagement = () => {
                           )}
                         </td>
                         <td>
-                          <span
-                            className={`product-status-badge status-${stockLevel}`}
-                          >
-                            {item.status}
-                          </span>
+                          <StatusBadge status={item.status} size="sm" />
                         </td>
                         <td className="product-td-actions">
                           <div className="act-actions">

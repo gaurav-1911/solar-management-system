@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import "./leadManagement.css";
-import { Dropdown, Pagination, TableLoader, TableEmptyState } from "../../components/common";
+import { Dropdown, Pagination, TableLoader, TableEmptyState, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import { useToast } from "../../components/common/Toast";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { useDebounce } from "../../hooks";
 import { leadValidationSchema, clampNumberInput } from "../../utils/AdminValidation";
 import { leadAPI, activityLogAPI, userAPI, technicianAPI } from "../../services/api";
 import { useAuth } from "../../context/AuthContext";
@@ -84,7 +84,7 @@ const LeadManagement = () => {
   const [submitting, setSubmitting] = useState(false);
   const [statusLoadingId, setStatusLoadingId] = useState(null);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [sourceFilter, setSourceFilter] = useState("All");
   const [assignedFilter, setAssignedFilter] = useState("All");
@@ -195,11 +195,6 @@ const LeadManagement = () => {
     }
   }, [overdueData]);
 
-  /* ── Debounce search input ── */
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
 
   /* ── Clamp page when total shrinks ── */
   useEffect(() => {
@@ -879,26 +874,21 @@ const downloadLeadLog = async (lead) => {
   return (
     <div className="lm-container">
       {/* ── Header ── */}
-      <div className="lm-header">
-        <div className="lm-header-left">
-          <h2>Lead Management</h2>
-          <p>
-            Capture, nurture, and convert potential customers into confirmed
-            solar installation projects
-          </p>
-        </div>
-        <div className="lm-header-actions">
-          {canDo("leads", "create") && (
-          <button className="lm-add-btn" onClick={openAddModal}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-            Add Lead
-          </button>
-          )}
-        </div>
-      </div>
+      <PageHeader
+        title="Lead Management"
+        description="Capture, nurture, and convert potential customers into confirmed solar installation projects"
+        actions={
+          canDo("leads", "create") && (
+            <button className="lm-add-btn" onClick={openAddModal}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Add Lead
+            </button>
+          )
+        }
+      />
 
       {/* ── Overdue Follow-up Banner ── */}
       {overdueLeads.length > 0 && (
@@ -951,26 +941,11 @@ const downloadLeadLog = async (lead) => {
 
       {/* ── Filters ── */}
           <div className="lm-filters">
-            <div className="lm-search">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search lead by name, email or phone"
-                value={search}
-                onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              />
-              {search && (
-                <button className="lm-search-clear" onClick={() => setSearch("")}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              )}
-            </div>
+            <SearchBar
+              placeholder="Search lead by name, email or phone"
+              value={search}
+              onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+            />
             <div className="lm-filter-selects">
               <Dropdown
                 value={statusFilter}

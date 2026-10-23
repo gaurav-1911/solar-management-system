@@ -2,11 +2,10 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useLocalToast, ToastRenderer } from "../../../components/common/Toast";
-import { Pagination, Dropdown, ErrorState, OfflineBanner, TableLoader, PageLoader } from "../../../components/common";
+import { Pagination, Dropdown, ErrorState, OfflineBanner, TableLoader, PageLoader, SearchBar, StatusBadge, PageHeader, StatCard } from "../../../components/common";
 import ConfirmDialog from "../../../components/common/ConfirmDialog";
 import RecordActivityModal, { ActivityLogButton } from "../../../components/common/RecordActivityModal";
 import GenericDetailActivityLog from "../../common/GenericDetailActivityLog";
-import StatCard from "../StatCard/StatCard";
 import { roleValidationSchema } from "../../../utils/AdminValidation";
 import { roleAPI } from "../../../services/api";
 import { useAuth } from "../../../context/AuthContext";
@@ -869,17 +868,17 @@ export default function RolePermissionManagement() {
 
   return (
     <div className="rp-module">
-      <header className="rp-header">
-        <div>
-          <h2>Roles &amp; Permissions</h2>
-          <p className="rp-subtitle">Configure exactly what every role can view, create, edit, delete and export across the platform.</p>
-        </div>
-        {canDo("role-permissions", "create") && (
-          <button type="button" className="rp-add-btn" onClick={() => setEditingRole({ mode: "create", role: null })}>
-            {icons.plus} Create Role
-          </button>
-        )}
-      </header>
+      <PageHeader
+        title="Roles & Permissions"
+        description="Configure exactly what every role can view, create, edit, delete and export across the platform."
+        actions={
+          canDo("role-permissions", "create") && (
+            <button type="button" className="rp-add-btn" onClick={() => setEditingRole({ mode: "create", role: null })}>
+              {icons.plus} Create Role
+            </button>
+          )
+        }
+      />
 
       <div className="rp-stats-grid">
           <StatCard title="Total Roles" value={totalRoles.toLocaleString()} change={0} icon={iconRoles} color="blue" />
@@ -889,15 +888,11 @@ export default function RolePermissionManagement() {
       </div>
 
       <div className="rp-filters">
-        <div className="rp-search">
-          <span className="rp-search-icon">{icons.search}</span>
-          <input type="text" placeholder="Search roles by name or description" value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }} />
-          {search && (
-            <button className="rp-search-clear" onClick={() => { setSearch(""); setCurrentPage(1); }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search roles by name or description"
+          value={search}
+          onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+        />
         <div className="rp-status-filter">
           <Dropdown
             value={statusFilter}

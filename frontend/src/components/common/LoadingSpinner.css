@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Reusable LoadingSpinner Styles & 10-Tier Breakpoints
+   ========================================================================== */
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  width: 100%;
+}
+
+.spinner-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary, #f59e0b);
+}
+
+.spinner-wrapper--inline {
+  display: inline-flex;
+}
+
+.spinner-svg {
+  animation: spinner-spin 0.85s linear infinite;
+  flex-shrink: 0;
+}
+
+.spinner-track {
+  opacity: 0.2;
+}
+
+.spinner-arc {
+  opacity: 1;
+}
+
+.spinner-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted, #64748b);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@keyframes spinner-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Sizes ── */
+.spinner-wrapper--xs .spinner-svg {
+  width: 14px;
+  height: 14px;
+}
+.spinner-wrapper--xs .spinner-text {
+  font-size: 0.75rem;
+}
+
+.spinner-wrapper--sm .spinner-svg {
+  width: 18px;
+  height: 18px;
+}
+.spinner-wrapper--sm .spinner-text {
+  font-size: 0.8125rem;
+}
+
+.spinner-wrapper--md .spinner-svg {
+  width: 28px;
+  height: 28px;
+}
+.spinner-wrapper--md .spinner-text {
+  font-size: 0.875rem;
+}
+
+.spinner-wrapper--lg .spinner-svg {
+  width: 42px;
+  height: 42px;
+}
+.spinner-wrapper--lg .spinner-text {
+  font-size: 1rem;
+}
+
+/* ── Color Themes ── */
+.spinner-wrapper--primary {
+  color: var(--primary, #f59e0b);
+}
+
+.spinner-wrapper--blue {
+  color: #2563eb;
+}
+
+.spinner-wrapper--white {
+  color: #ffffff;
+}
+
+.spinner-wrapper--neutral {
+  color: #64748b;
+}
+
+/* ==========================================================================
+   10-Tier Responsive Breakpoints
+   ========================================================================== */
+
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .spinner-container {
+    padding: 20px 8px;
+  }
+  .spinner-wrapper--lg .spinner-svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .spinner-container {
+    padding: 22px 10px;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .spinner-container {
+    padding: 24px 12px;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .spinner-container {
+    padding: 26px 14px;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .spinner-container {
+    padding: 28px 16px;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .spinner-container {
+    padding: 30px 16px;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .spinner-container {
+    padding: 32px 16px;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .spinner-container {
+    padding: 32px 16px;
+  }
+}
+
+/* Desktop: 1280px–1439px */
+@media screen and (min-width: 1280px) and (max-width: 1439px) {
+  .spinner-container {
+    padding: 36px 16px;
+  }
+}
+
+/* Large desktop: 1440px and above */
+@media screen and (min-width: 1440px) {
+  .spinner-container {
+    padding: 40px 16px;
+  }
+}

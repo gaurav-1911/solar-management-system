@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pagination, Dropdown, TableLoader } from "../../components/common";
+import { Pagination, Dropdown, TableLoader, PageHeader, SearchBar, StatusBadge } from "../../components/common";
+import { useDebounce } from "../../hooks";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import StatCard from "../dashboard/StatCard/StatCard";
 import { useToast } from "../../components/common/Toast";
@@ -43,7 +44,7 @@ const TeamSchedule = () => {
   const [technicians, setTechnicians] = useState([]);
   const [serverTotal, setServerTotal] = useState(0);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [shiftFilter, setShiftFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
   const [dateFrom, setDateFrom] = useState("");
@@ -95,11 +96,7 @@ const TeamSchedule = () => {
     fetchSchedules();
   }, [fetchSchedules]);
 
-  // ── Debounce the search input so keystrokes don't fire an API call each ──
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
+
 
   // ── Fetch technicians for the dropdown ──
   useEffect(() => {
@@ -307,20 +304,18 @@ const downloadScheduleLog = async (s) => {
   return (
     <div className="tm-page">
       {/* Page Header */}
-      <div className="tm-header">
-        <div>
-          <h1 className="tm-title">Team Schedule</h1>
-          <p className="tm-subtitle">Manage technician work schedules, shift assignments, and daily job allocations across the team.</p>
-        </div>
-        <div className="tm-header-actions">
-          {canDo("team-schedule", "create") && (
-          <button className="tm-btn tm-btn-primary" onClick={() => openScheduleModal(null)}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-            Add Schedule
-          </button>
-          )}
-        </div>
-      </div>
+      <PageHeader
+        title="Team Schedule"
+        subtitle="Manage technician work schedules, shift assignments, and daily job allocations across the team."
+        actions={
+          canDo("team-schedule", "create") && (
+            <button className="tm-btn tm-btn-primary" onClick={() => openScheduleModal(null)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+              Add Schedule
+            </button>
+          )
+        }
+      />
 
       {/* Stats */}
       <div className="tech-stats-grid">
@@ -353,17 +348,11 @@ const downloadScheduleLog = async (s) => {
       {/* Toolbar */}
       <div className="tm-toolbar">
         <div className="tm-toolbar-row">
-          <div className="tm-search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }} placeholder="Search by Name, ID, Job, or Location" />
-            {search && (
-              <button className="tm-search-clear" onClick={() => { setSearch(""); setCurrentPage(1); }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-            )}
-          </div>
+          <SearchBar
+            value={search}
+            onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+            placeholder="Search by Name, ID, Job, or Location"
+          />
           <Dropdown value={shiftFilter} onChange={(val) => { setShiftFilter(val); setCurrentPage(1); }} options={[{ value: "All", label: "All Shifts" }, ...SHIFT_TYPES.map((s) => ({ value: s, label: s }))]} />
           <Dropdown value={statusFilter} onChange={(val) => { setStatusFilter(val); setCurrentPage(1); }} options={[{ value: "All", label: "All Statuses" }, ...SCHEDULE_STATUSES.map((s) => ({ value: s, label: s }))]} />
           <input type="date" className="tm-filter-date-inline" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setCurrentPage(1); }} title="From date" />
@@ -411,7 +400,7 @@ const downloadScheduleLog = async (s) => {
                     <td>{s.shiftStart} - {s.shiftEnd}</td>
                     <td className="tm-td-title">{s.jobAssignment}</td>
                     <td>{s.siteLocation}</td>
-                    <td><span className={`tm-status-badge ${getStatusClass(s.status)}`}>{s.status}</span></td>
+                    <td><StatusBadge status={s.status} size="sm" /></td>
                     <td>
                       <div className="act-actions">
                         <button className="act-btn act-view" onClick={() => openViewModal(s)} title="View">

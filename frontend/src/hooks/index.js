@@ -4,5 +4,6 @@ export { default as useFormController } from "./useFormController";
 export { default as useFormikHelper } from "./useFormikHelper";
 export { default as useDebounce } from "./useDebounce";
 export { default as useModalState } from "./useModalState";
+export { default as usePagination } from "./usePagination";
 export { default as useCrudManager } from "./useCrudManager";
 export { useInvoice, useReceipt, useCreditNote } from "./billing";

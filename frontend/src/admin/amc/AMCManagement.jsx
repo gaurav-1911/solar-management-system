@@ -2,9 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { amcSchema, visitSchema } from "../../utils/AdminValidation";
-import { Dropdown, Pagination, TableLoader, PageLoader, TableEmptyState } from "../../components/common";
+import { Dropdown, Pagination, TableLoader, PageLoader, TableEmptyState, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
-import StatCard from "../dashboard/StatCard/StatCard";
 import { useToast } from "../../components/common/Toast";
 import { amcAPI, serviceVisitAPI, customerAPI, productAPI, technicianAPI } from "../../services";
 import { fetchAllPages } from "../../utils";
@@ -505,15 +504,10 @@ async function downloadAMCLog(a) {
 
   return (
     <div className="amc-container">
-      <div className="amc-header">
-        <div>
-          <h2>AMC Management</h2>
-          <p className="td-sub">
-            Annual maintenance contracts — create, renew, log visits and track
-            coverage.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        title="AMC Management"
+        description="Annual maintenance contracts — create, renew, log visits and track coverage."
+      />
 
       <div className="amc-stats-grid">
         <StatCard
@@ -543,40 +537,11 @@ async function downloadAMCLog(a) {
       </div>
 
       <div className="amc-filter-bar">
-        <div className="amc-search-wrap">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search AMC records"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          {search && (
-            <button className="amc-search-clear" onClick={() => setSearch("")}>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search AMC records"
+          value={search}
+          onChange={(val) => setSearch(val)}
+        />
         <Dropdown
           value={statusFilter}
           onChange={(val) => setStatusFilter(val)}
@@ -665,9 +630,7 @@ async function downloadAMCLog(a) {
                     </td>
                     <td>{a.nextService ? displayDate(a.nextService) : "-"}</td>
                     <td>
-                      <span className={`status-badge ${meta.tone}`}>
-                        {meta.label}
-                      </span>
+                      <StatusBadge status={meta.label} size="sm" />
                     </td>
                     <td>
                       <div className="act-actions">

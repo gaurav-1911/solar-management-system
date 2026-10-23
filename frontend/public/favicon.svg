@@ -1,46 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbbf24" />
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Solar Amber / Gold Gradient -->
+    <linearGradient id="solarAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#fbbf24" />
+      <stop offset="85%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- Solar Photovoltaic Blue / Cyan Gradient -->
+    <linearGradient id="solarCell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <!-- Radiant Sun Core Gradient -->
+    <linearGradient id="sunCore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#fef08a" />
       <stop offset="100%" stop-color="#f59e0b" />
     </linearGradient>
-    <linearGradient id="panelFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="100%" stop-color="#0f172a" />
-    </linearGradient>
-    <linearGradient id="cellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#0284c7" />
+
+    <!-- Outer Rim Subtle Stroke -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.2" />
     </linearGradient>
   </defs>
 
-  <!-- Sun Rays (Top Left) -->
-  <g stroke="url(#sunGrad)" stroke-width="4.5" stroke-linecap="round">
-    <line x1="30" y1="10" x2="30" y2="17" />
-    <line x1="10" y1="30" x2="17" y2="30" />
-    <line x1="16" y1="16" x2="21" y2="21" />
-    <line x1="44" y1="16" x2="39" y2="21" />
-    <line x1="16" y1="44" x2="21" y2="39" />
+  <!-- Container Squircle with Rounded Corners -->
+  <rect x="20" y="20" width="472" height="472" rx="108" fill="url(#bgGrad)" stroke="url(#rimGrad)" stroke-width="8" />
+
+  <!-- Ambient Golden Glow -->
+  <circle cx="360" cy="144" r="110" fill="#f59e0b" fill-opacity="0.16" />
+  <circle cx="170" cy="350" r="100" fill="#38bdf8" fill-opacity="0.12" />
+
+  <!-- Radiant Sun (Apex Right) -->
+  <g id="sunElement">
+    <circle cx="368" cy="144" r="44" fill="url(#sunCore)" />
+    <!-- Sun Rays with Rounded Caps -->
+    <g stroke="url(#solarAmber)" stroke-width="10" stroke-linecap="round">
+      <line x1="368" y1="68" x2="368" y2="84" />
+      <line x1="444" y1="144" x2="428" y2="144" />
+      <line x1="422" y1="90" x2="410" y2="102" />
+      <line x1="422" y1="198" x2="410" y2="186" />
+      <line x1="314" y1="90" x2="326" y2="102" />
+    </g>
   </g>
 
-  <!-- Radiant Sun Core -->
-  <circle cx="30" cy="30" r="14" fill="url(#sunGrad)" />
-  <circle cx="30" cy="30" r="9" fill="#fef08a" />
+  <!-- The Geometric Solar 'S' -->
+  <g id="solarS">
+    <!-- Main Outer S Ribbon Geometry -->
+    <path d="M 284 96 L 200 96 C 146 96 104 130 104 182 C 104 236 142 260 200 272 L 256 284 C 290 291 308 306 308 328 C 308 352 286 368 250 368 L 152 368 C 140 368 132 358 136 346 L 142 330 C 144 324 140 318 134 318 L 98 318 C 92 318 86 324 88 330 L 80 356 C 74 384 92 418 144 418 L 258 418 C 334 418 388 380 388 320 C 388 262 346 238 290 226 L 234 214 C 198 206 180 194 180 174 C 180 152 202 142 234 142 L 302 142 C 314 142 322 152 318 164 L 312 178 C 310 184 314 190 320 190 L 356 190 C 362 190 368 184 366 178 L 374 150 C 380 124 360 96 314 96 Z"
+          fill="url(#solarAmber)" />
 
-  <!-- 3D Solar Plate / Panel Frame -->
-  <path d="M 20 42 L 80 42 L 90 86 L 10 86 Z" fill="url(#panelFrameGrad)" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" />
+    <!-- Upper Photovoltaic Panel Inset (Cyan/Blue Solar Cells) -->
+    <path d="M 200 108 L 288 108 C 298 108 304 116 302 126 L 298 132 L 190 132 C 184 132 180 128 182 122 C 184 114 190 108 200 108 Z"
+          fill="url(#solarCell)" />
+    <!-- Upper Cell Dividers (White Grid Lines) -->
+    <line x1="226" y1="108" x2="224" y2="132" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" />
+    <line x1="262" y1="108" x2="260" y2="132" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" />
 
-  <!-- Solar Plate Blue Cells -->
-  <path d="M 22 44 L 78 44 L 87 84 L 13 84 Z" fill="url(#cellGrad)" />
-
-  <!-- Solar Plate Grid Lines -->
-  <g stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.95">
-    <!-- Horizontal Dividers -->
-    <line x1="18" y1="57" x2="82" y2="57" />
-    <line x1="15" y1="70" x2="85" y2="70" />
-    <!-- Vertical Dividers -->
-    <line x1="38" y1="44" x2="31" y2="84" />
-    <line x1="50" y1="44" x2="50" y2="84" />
-    <line x1="62" y1="44" x2="69" y2="84" />
+    <!-- Lower Photovoltaic Panel Inset -->
+    <path d="M 164 376 L 254 376 C 272 376 284 384 282 396 L 280 404 L 146 404 C 140 404 136 398 138 392 L 142 384 C 146 378 154 376 164 376 Z"
+          fill="url(#solarCell)" />
+    <!-- Lower Cell Dividers (White Grid Lines) -->
+    <line x1="188" y1="376" x2="186" y2="404" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" />
+    <line x1="228" y1="376" x2="226" y2="404" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" />
   </g>
+
+  <!-- Energetic Central Diagonal Accent -->
+  <line x1="218" y1="246" x2="274" y2="258" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-opacity="0.9" />
 </svg>

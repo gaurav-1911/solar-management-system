@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pagination, Dropdown, TableLoader, TableEmptyState } from "../../components/common";
+import { Pagination, Dropdown, TableLoader, TableEmptyState, PageHeader, SearchBar, StatusBadge } from "../../components/common";
+import { useDebounce } from "../../hooks";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import StatCard from "../dashboard/StatCard/StatCard";
 import { useToast } from "../../components/common/Toast";
@@ -41,7 +42,7 @@ const TaskAssignment = () => {
   const [installations, setInstallations] = useState([]);
   const [serverTotal, setServerTotal] = useState(0);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [technicianFilter, setTechnicianFilter] = useState("All");
   const [jobStatusFilter, setJobStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
@@ -100,11 +101,7 @@ const TaskAssignment = () => {
     fetchJobs();
   }, [fetchJobs]);
 
-  // ── Debounce the search input so keystrokes don't fire an API call each ──
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
+
 
   // â”€â”€ Fetch technicians for the dropdown â”€â”€
   useEffect(() => {
@@ -480,20 +477,18 @@ const downloadJobLog = async (job) => {
       {!showJobPage && (
         <>
           {/* Page Header */}
-          <div className="tm-header">
-            <div>
-              <h1 className="tm-title">Task Assignment</h1>
-              <p className="tm-subtitle">Assign and manage technician jobs, track priorities, deadlines, and job status across the team.</p>
-            </div>
-            <div className="tm-header-actions">
-              {canDo("task-assignment", "create") && (
-              <button className="tm-btn tm-btn-primary" onClick={() => openJobPage(null)}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                Assign Job
-              </button>
-              )}
-            </div>
-          </div>
+          <PageHeader
+            title="Task Assignment"
+            subtitle="Assign and manage technician jobs, track priorities, deadlines, and job status across the team."
+            actions={
+              canDo("task-assignment", "create") && (
+                <button className="tm-btn tm-btn-primary" onClick={() => openJobPage(null)}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                  Assign Job
+                </button>
+              )
+            }
+          />
 
           {/* Stats */}
           <div className="tech-stats-grid">
@@ -527,17 +522,11 @@ const downloadJobLog = async (job) => {
           <div className="tm-section">
             <div className="tm-toolbar">
               <div className="tm-toolbar-row">
-                <div className="tm-search">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                  <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }} placeholder="Search by Name, ID, Customer, or Job Title" />
-                  {search && (
-                    <button className="tm-search-clear" onClick={() => { setSearch(""); setCurrentPage(1); }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
-                    </button>
-                  )}
-                </div>
+                <SearchBar
+                  value={search}
+                  onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+                  placeholder="Search by Name, ID, Customer, or Job Title"
+                />
                 {!isTechUser && (
                   <Dropdown value={technicianFilter} onChange={(val) => { setTechnicianFilter(val); setCurrentPage(1); }} options={[{ value: "All", label: "All Technicians" }, ...technicianOptions]} />
                 )}
@@ -579,8 +568,8 @@ const downloadJobLog = async (job) => {
                           <td className="tm-td-title">{job.jobTitle}</td>
                           <td>{formatDate(job.assignedDate)}</td>
                           <td>{job.dueDate ? formatDate(job.dueDate) : "\u2014"}</td>
-                          <td><span className={`tm-priority-badge ${getPriorityClass(job.priority)}`}>{job.priority}</span></td>
-                          <td><span className={`tm-status-badge ${getStatusClass(job.status)}`}>{job.status}</span></td>
+                          <td><StatusBadge status={job.priority} size="sm" /></td>
+                          <td><StatusBadge status={job.status} size="sm" /></td>
                           <td>
                             <div className="act-actions">
                               <button className="act-btn act-view" onClick={() => openViewModal(job)} title="View">

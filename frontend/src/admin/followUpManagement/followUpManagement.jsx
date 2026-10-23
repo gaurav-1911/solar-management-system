@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import "./followUpManagement.css";
-import { Dropdown, Pagination, TableLoader, TableEmptyState } from "../../components/common";
+import { Dropdown, Pagination, TableLoader, TableEmptyState, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import { useToast } from "../../components/common/Toast";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { useDebounce } from "../../hooks";
 import { followUpValidationSchema } from "../../utils/AdminValidation";
 import {
   followUpAPI,
@@ -58,7 +58,7 @@ const FollowUpManagement = () => {
   const [followUps, setFollowUps] = useState([]);
   const [serverTotal, setServerTotal] = useState(0);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [typeFilter, setTypeFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
@@ -94,11 +94,6 @@ const FollowUpManagement = () => {
   const [quotationsList, setQuotationsList] = useState([]);
   const [usersList, setUsersList] = useState([]);
 
-  /* ── Debounce Search Input ── */
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
 
   /* ── Fetch Follow-Ups (TanStack Query) ── */
   const { data: followUpRes, isLoading: loading, refetch } = useQuery({
@@ -438,13 +433,11 @@ const FollowUpManagement = () => {
   return (
     <div className="lm-container">
       {/* ── Header ── */}
-      <div className="lm-header">
-        <div className="lm-header-left">
-          <h2>Follow-Ups</h2>
-          <p>Track, schedule, and execute customer follow-ups and call history</p>
-        </div>
-        <div className="lm-header-actions">
-          {canDo("follow-ups", "create") && (
+      <PageHeader
+        title="Follow-Ups"
+        description="Track, schedule, and execute customer follow-ups and call history"
+        actions={
+          canDo("follow-ups", "create") && (
             <button className="lm-add-btn" onClick={openAddModal}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -452,9 +445,9 @@ const FollowUpManagement = () => {
               </svg>
               Add Follow-Up
             </button>
-          )}
-        </div>
-      </div>
+          )
+        }
+      />
 
       {/* ── Overdue Banner ── */}
       {overdueFollowUps.length > 0 && (
@@ -503,26 +496,11 @@ const FollowUpManagement = () => {
 
       {/* ── Filters Bar ── */}
       <div className="lm-filters">
-        <div className="lm-search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search contact, phone, email, Id"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-          />
-          {search && (
-            <button className="lm-search-clear" onClick={() => setSearch("")}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search contact, phone, email, Id"
+          value={search}
+          onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+        />
 
         <div className="lm-filter-selects">
           <Dropdown

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pagination, Dropdown, TableLoader } from "../../components/common";
+import { Pagination, Dropdown, TableLoader, PageHeader, SearchBar, StatusBadge } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import StatCard from "../dashboard/StatCard/StatCard";
 import { useToast } from "../../components/common/Toast";
@@ -286,20 +286,18 @@ const downloadAttendanceLog = async (a) => {
   return (
     <div className="tm-page">
       {/* Page Header */}
-      <div className="tm-header">
-        <div>
-          <h1 className="tm-title">Attendance Management</h1>
-          <p className="tm-subtitle">Track and manage technician attendance, check-in/check-out times, and leave records.</p>
-        </div>
-        <div className="tm-header-actions">
-          {canDo("attendance", "create") && (
-          <button className="tm-btn tm-btn-primary" onClick={() => openAttModal(null)}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-            Add Attendance
-          </button>
-          )}
-        </div>
-      </div>
+      <PageHeader
+        title="Attendance Management"
+        subtitle="Track and manage technician attendance, check-in/check-out times, and leave records."
+        actions={
+          canDo("attendance", "create") && (
+            <button className="tm-btn tm-btn-primary" onClick={() => openAttModal(null)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+              Add Attendance
+            </button>
+          )
+        }
+      />
 
       {/* Stats */}
       <div className="tm-stats-grid">
@@ -332,17 +330,11 @@ const downloadAttendanceLog = async (a) => {
       {/* Toolbar */}
       <div className="tm-toolbar">
         <div className="tm-toolbar-row">
-          <div className="tm-search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }} placeholder="Search by Name or ID" />
-            {search && (
-              <button className="tm-search-clear" onClick={() => { setSearch(""); setCurrentPage(1); }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-            )}
-          </div>
+          <SearchBar
+            value={search}
+            onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+            placeholder="Search by Name or ID"
+          />
           <Dropdown value={attStatusFilter} onChange={(val) => { setAttStatusFilter(val); setCurrentPage(1); }} options={[{ value: "All", label: "All Statuses" }, ...ATTENDANCE_STATUSES.map((s) => ({ value: s, label: s }))]} />
           <input type="date" className="tm-filter-date-inline" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setCurrentPage(1); }} title="From date" />
           <input type="date" className="tm-filter-date-inline" value={dateTo} onChange={(e) => { setDateTo(e.target.value); setCurrentPage(1); }} title="To date" />
@@ -385,7 +377,7 @@ const downloadAttendanceLog = async (a) => {
                     <td>{formatDate(a.date)}</td>
                     <td>{a.checkIn || "\u2014"}</td>
                     <td>{a.checkOut || "\u2014"}</td>
-                    <td><span className={`tm-att-badge ${getAttStatusClass(a.status)}`}>{a.status}</span></td>
+                    <td><StatusBadge status={a.status} size="sm" /></td>
                     <td>
                       <div className="act-actions">
                         <button className="act-btn act-view" onClick={() => openViewModal(a)} title="View">

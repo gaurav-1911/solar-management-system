@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { Pagination, Dropdown, TableLoader } from "../../components/common";
+import { Pagination, Dropdown, TableLoader, PageHeader, SearchBar, StatusBadge } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import StatCard from "../dashboard/StatCard/StatCard";
 import { useToast } from "../../components/common/Toast";
@@ -1066,39 +1066,38 @@ const downloadPerfReport = async (techName) => {
   return (
     <div className="tm-page">
       {/* Page Header */}
-      <div className="tm-header">
-        <div>
-          <h1 className="tm-title">Technician Management</h1>
-          <p className="tm-subtitle">Track technician locations, daily reports, task status, and performance metrics.</p>
-        </div>
-        <div className="tm-header-actions">
-          {activeSection === "list" && canDo("technicians", "create") && (
-            <button className="tm-btn tm-btn-primary" onClick={() => openTechModal(null)}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="20" y1="8" x2="20" y2="14" /><line x1="23" y1="11" x2="17" y2="11" /></svg>
-              Add Technician
-            </button>
-          )}
-          {activeSection === "location" && canDo("technicians", "create") && (
-            <button className="tm-btn tm-btn-primary" onClick={() => openLocationModal(null)}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-              Add Current Location
-            </button>
-          )}
-          
-          {activeSection === "reports" && canDo("technicians", "create") && (
-            <button className="tm-btn tm-btn-primary" onClick={() => openReportModal(null)}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-              Create Report
-            </button>
-          )}
-          {activeSection === "tasks" && canDo("technicians", "create") && (
-            <button className="tm-btn tm-btn-primary" onClick={() => openTaskModal(null)}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-              Add Task
-            </button>
-          )}
-        </div>
-      </div>
+      <PageHeader
+        title="Technician Management"
+        subtitle="Track technician locations, daily reports, task status, and performance metrics."
+        actions={
+          <div className="tm-header-actions">
+            {activeSection === "list" && canDo("technicians", "create") && (
+              <button className="tm-btn tm-btn-primary" onClick={() => openTechModal(null)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="20" y1="8" x2="20" y2="14" /><line x1="23" y1="11" x2="17" y2="11" /></svg>
+                Add Technician
+              </button>
+            )}
+            {activeSection === "location" && canDo("technicians", "create") && (
+              <button className="tm-btn tm-btn-primary" onClick={() => openLocationModal(null)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                Add Current Location
+              </button>
+            )}
+            {activeSection === "reports" && canDo("technicians", "create") && (
+              <button className="tm-btn tm-btn-primary" onClick={() => openReportModal(null)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                Create Report
+              </button>
+            )}
+            {activeSection === "tasks" && canDo("technicians", "create") && (
+              <button className="tm-btn tm-btn-primary" onClick={() => openTaskModal(null)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                Add Task
+              </button>
+            )}
+          </div>
+        }
+      />
 
       {/* Stats Row - above section tabs (hidden for technicians) */}
       {!isTechUser && (
@@ -1149,18 +1148,11 @@ const downloadPerfReport = async (techName) => {
         <div className="tm-section">
           <div className="tm-toolbar">
             <div className="tm-toolbar-row">
-              <div className="tm-search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                <input type="text" value={techSearch} onChange={(e) => { setTechSearch(e.target.value); setTechPage(1); }} placeholder="Search by name, ID, phone, or email" />
-                {techSearch && (
-                  <button className="tm-search-clear" onClick={() => { setTechSearch(""); setTechPage(1); }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-                )}
-              </div>
+              <SearchBar
+                value={techSearch}
+                onChange={(val) => { setTechSearch(val); setTechPage(1); }}
+                placeholder="Search by name, ID, phone, or email"
+              />
               <Dropdown value={techStatusFilter} onChange={(val) => { setTechStatusFilter(val); setTechPage(1); }} options={[{ value: "All", label: "All Status" }, ...TECH_STATUS.map((s) => ({ value: s, label: s }))]} />
               {/* Skills filter hidden — not needed
               <Dropdown value={techSkillFilter} onChange={(val) => { setTechSkillFilter(val); setTechPage(1); }} options={[{ value: "All", label: "All Skills" }, ...TECH_SKILLS.map((s) => ({ value: s, label: s }))]} />
@@ -1202,7 +1194,7 @@ const downloadPerfReport = async (techName) => {
                             <td>{t.email}</td>
                             {/* Skills cell hidden */}
                             <td>{t.experience}</td>
-                            <td><span className={`tm-status-badge ${t.status === "Available" ? "tm-status-done" : t.status === "Busy" ? "tm-status-progress" : t.status === "On Leave" ? "tm-status-pending" : "tm-status-inactive"}`}>{t.status}</span></td>
+                            <td><StatusBadge status={t.status} size="sm" /></td>
                             <td>{t.joinDate}</td>
                             <td>
                               <div className="act-actions">
@@ -1362,18 +1354,11 @@ const downloadPerfReport = async (techName) => {
         <div className="tm-section">
           <div className="tm-toolbar">
             <div className="tm-toolbar-row">
-              <div className="tm-search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                <input type="text" value={reportSearch} onChange={(e) => { setReportSearch(e.target.value); setReportPage(1); }} placeholder="Search reports" />
-                {reportSearch && (
-                  <button className="tm-search-clear" onClick={() => { setReportSearch(""); setReportPage(1); }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-                )}
-              </div>
+              <SearchBar
+                value={reportSearch}
+                onChange={(val) => { setReportSearch(val); setReportPage(1); }}
+                placeholder="Search reports"
+              />
               <Dropdown value={technicianFilter} onChange={(val) => { setTechnicianFilter(val); }} options={[{ value: "All", label: "All Technicians" }, ...technicians.map((t) => ({ value: t.name, label: t.name }))]} />
               <input type="date" className="tm-filter-date-inline" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} title="From date" />
               <input type="date" className="tm-filter-date-inline" value={dateTo} onChange={(e) => setDateTo(e.target.value)} title="To date" />
@@ -1441,18 +1426,11 @@ const downloadPerfReport = async (techName) => {
         <div className="tm-section">
           <div className="tm-toolbar">
             <div className="tm-toolbar-row">
-              <div className="tm-search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                <input type="text" value={taskSearch} onChange={(e) => { setTaskSearch(e.target.value); setTaskPage(1); }} placeholder="Search tasks" />
-                {taskSearch && (
-                  <button className="tm-search-clear" onClick={() => { setTaskSearch(""); setTaskPage(1); }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-                )}
-              </div>
+              <SearchBar
+                value={taskSearch}
+                onChange={(val) => { setTaskSearch(val); setTaskPage(1); }}
+                placeholder="Search tasks"
+              />
               <Dropdown value={technicianFilter} onChange={(val) => { setTechnicianFilter(val); setTaskPage(1); }} options={[{ value: "All", label: "All Technicians" }, ...technicians.map((t) => ({ value: t.name, label: t.name }))]} />
             </div>
           </div>

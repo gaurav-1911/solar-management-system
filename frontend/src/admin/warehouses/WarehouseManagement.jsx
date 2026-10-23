@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Pagination, Dropdown, ConfirmDialog, TableLoader, FormField } from "../../components/common";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { Pagination, Dropdown, ConfirmDialog, TableLoader, FormField, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
+import { useDebounce } from "../../hooks";
 import { useToast } from "../../components/common/Toast";
 import { useFormik } from "formik";
 import { warehouseAPI } from "../../services/api";
@@ -35,6 +35,7 @@ const WarehouseManagement = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -45,7 +46,6 @@ const WarehouseManagement = () => {
   const [deleting, setDeleting] = useState(false);
   const [showLogModal, setShowLogModal] = useState(null);
   const [recordActivityTarget, setRecordActivityTarget] = useState(null);
-  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [serverTotal, setServerTotal] = useState(0);
 
   // Reset internal detail sub-views when sidebar or route navigation occurs
@@ -107,12 +107,6 @@ const WarehouseManagement = () => {
   useEffect(() => {
     fetchStats();
   }, [fetchStats]);
-
-  /* ── Debounce the search input ── */
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
 
   const warehouseFormik = useFormik({
     initialValues: {
@@ -244,15 +238,10 @@ const WarehouseManagement = () => {
 
   return (
     <div className="wh-container">
-      <header className="wh-header">
-        <div>
-          <h1 className="wh-header-title">Warehouse Management</h1>
-          <p className="wh-header-subtitle">
-            Manage your storage locations — warehouses added here appear in the
-            Inventory page's Location dropdown.
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        title="Warehouse Management"
+        description="Manage your storage locations — warehouses added here appear in the Inventory page's Location dropdown."
+      />
 
       <div className="wh-stats-grid">
         <StatCard
@@ -282,49 +271,14 @@ const WarehouseManagement = () => {
       </div>
 
       <div className="wh-filter-bar">
-        <div className="wh-search-wrap">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search warehouses by name, code, city"
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setCurrentPage(1);
-            }}
-          />
-          {search && (
-            <button
-              className="wh-search-clear"
-              onClick={() => {
-                setSearch("");
-                setCurrentPage(1);
-              }}
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search warehouses by name, code, city"
+          value={search}
+          onChange={(val) => {
+            setSearch(val);
+            setCurrentPage(1);
+          }}
+        />
         <Dropdown
           value={statusFilter}
           onChange={(val) => {
@@ -452,11 +406,7 @@ const WarehouseManagement = () => {
                         {formatNum(w.capacity)}
                       </td>
                       <td>
-                        <span
-                          className={`wh-status-badge ${w.status === "Active" ? "wh-active" : "wh-inactive"}`}
-                        >
-                          {w.status}
-                        </span>
+                        <StatusBadge status={w.status} size="sm" />
                       </td>
                       <td className="wh-td-actions">
                         <div className="act-actions">

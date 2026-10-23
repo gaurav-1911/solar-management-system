@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import "./customermanagement.css";
-import { Dropdown, Pagination, TableLoader, TableEmptyState } from "../../components/common";
+import { Dropdown, Pagination, TableLoader, TableEmptyState, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import { useToast } from "../../components/common/Toast";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { useDebounce } from "../../hooks";
 import { customerValidationSchema } from "../../utils/AdminValidation";
 import { customerAPI } from "../../services/api";
 import { createProfilePdf } from "../../utils/pdfLayout";
@@ -42,7 +42,7 @@ const CustomerManagement = () => {
   const [submitting, setSubmitting] = useState(false);
   const [statusLoadingId, setStatusLoadingId] = useState(null);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [typeFilter, setTypeFilter] = useState("All");
   const [showModal, setShowModal] = useState(false);
@@ -117,11 +117,6 @@ const CustomerManagement = () => {
     }
   }, [customerData]);
 
-  /* ── Debounce search input ── */
-  useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 400);
-    return () => clearTimeout(t);
-  }, [search]);
 
   /* ── Clamp page when total shrinks ── */
   useEffect(() => {
@@ -453,22 +448,20 @@ const downloadCustomerLog = async (customer) => {
   return (
     <div className="cm-container">
       {/* ── Header ── */}
-      <div className="cm-header">
-        <div className="cm-header-left">
-          <h2>Customer Management</h2>
-          <p>Manage your solar installation customers, their contracts, and service history</p>
-        </div>
-        <div className="cm-header-actions" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          {canDo("customers", "create") && (
-          <button className="cm-add-btn" onClick={openAddModal}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-            Add Customer
-          </button>
-          )}
-        </div>
-      </div>
+      <PageHeader
+        title="Customer Management"
+        description="Manage your solar installation customers, their contracts, and service history"
+        actions={
+          canDo("customers", "create") && (
+            <button className="cm-add-btn" onClick={openAddModal}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Add Customer
+            </button>
+          )
+        }
+      />
 
       {/* ── Stats Cards (Dashboard-style KPI) ── */}
       <div className="cm-stats-grid">
@@ -504,20 +497,11 @@ const downloadCustomerLog = async (customer) => {
 
       {/* ── Filters ── */}
       <div className="cm-filters">
-        <div className="cm-search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input type="text" placeholder="Search customer by name, email or phone" value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }} />
-          {search && (
-            <button className="cm-search-clear" onClick={() => setSearch("")}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search customer by name, email or phone"
+          value={search}
+          onChange={(val) => { setSearch(val); setCurrentPage(1); }}
+        />
         <div className="cm-filter-selects">
           <Dropdown
             value={statusFilter}
@@ -585,7 +569,7 @@ const downloadCustomerLog = async (customer) => {
                           disabled={statusLoadingId === (c.id || c._id)}
                         />
                       ) : (
-                        <span className={`cm-status-badge cm-status-${(c.status || "").toLowerCase()}`}>{c.status || "—"}</span>
+                        <StatusBadge status={c.status} size="sm" />
                       )}
                     </td>
                     <td className="cm-td-capacity">{c.capacity}</td>

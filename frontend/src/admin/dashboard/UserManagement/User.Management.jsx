@@ -4,10 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ROLES, ROLE_LABELS, getStoredRolesList, getRoleLabel } from "../../../config/roles";
 import { USER_STATUSES, getStatusMeta, statusFilterOptions } from "../../../config/statuses";
-import { Pagination, Dropdown, ErrorState, OfflineBanner, PageLoader, TableLoader } from "../../../components/common";
+import { Pagination, Dropdown, ErrorState, OfflineBanner, PageLoader, TableLoader, SearchBar, StatusBadge, PageHeader, StatCard } from "../../../components/common";
 import ConfirmDialog from "../../../components/common/ConfirmDialog";
 import { useLocalToast, ToastRenderer } from "../../../components/common/Toast";
-import StatCard from "../StatCard/StatCard";
 import { ActivityLogButton } from "../../../components/common/RecordActivityModal";
 import { userValidationSchema,
   NAME_REGEX,
@@ -604,13 +603,11 @@ export default function UserManagement() {
 
   return (
     <div className="usr-module">
-      <div className="usr-header">
-        <div className="usr-header-left">
-          <h2>User Management</h2>
-          <p>Manage employees, technicians, sales staff, and admins — including roles, permissions, departments, and activity history.</p>
-        </div>
-        <div className="usr-header-actions">
-          {canDo("users", "create") && (
+      <PageHeader
+        title="User Management"
+        description="Manage employees, technicians, sales staff, and admins — including roles, permissions, departments, and activity history."
+        actions={
+          canDo("users", "create") && (
             <button className="usr-add-btn" onClick={() => setShowAddUser(true)}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -618,9 +615,9 @@ export default function UserManagement() {
               </svg>
               Add User
             </button>
-          )}
-        </div>
-      </div>
+          )
+        }
+      />
 
       {/* ── KPI Stats Grid (Dashboard-style with top border) ── */}
       <div className="usr-stats-grid">
@@ -877,26 +874,11 @@ function UsersPanel({
     <section aria-label="All users">
       {/* ── Filters ── */}
       <div className="usr-filters">
-        <div className="usr-search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search by name, email, or ID"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          {search && (
-            <button className="usr-search-clear" onClick={() => setSearch("")}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
+        <SearchBar
+          placeholder="Search by name, email, or ID"
+          value={search}
+          onChange={(val) => setSearch(val)}
+        />
         <div className="usr-filter-selects">
           <Dropdown
             value={roleFilter}

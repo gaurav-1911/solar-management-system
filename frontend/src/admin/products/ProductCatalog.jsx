@@ -15,8 +15,8 @@ import {
 import { useFormik } from "formik";
 import { productSchema } from "../../utils/AdminValidation";
 import { productAPI, productCategoryAPI, vendorAPI, inventoryAPI, purchaseOrderAPI } from "../../services/api";
-import { Dropdown, Pagination, ConfirmDialog, TableLoader, PageLoader } from "../../components/common";
-import StatCard from "../dashboard/StatCard/StatCard";
+import { Dropdown, Pagination, ConfirmDialog, TableLoader, PageLoader, SearchBar, StatusBadge, PageHeader, StatCard } from "../../components/common";
+import { useDebounce } from "../../hooks";
 import { useToast } from "../../components/common/Toast";
 import { sortCategories, sortById } from "../../utils/helpers";
 import { useAuth } from "../../context/AuthContext";
@@ -162,8 +162,7 @@ const ProductCatalog = () => {
   const [brandFilter, setBrandFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  // Debounced copy of the search box — the table only refetches after the user pauses typing.
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(searchQuery, 300);
   const location = useLocation();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [viewMode, setViewMode] = useState("table");
@@ -406,13 +405,6 @@ const ProductCatalog = () => {
       );
     }
   };
-
-  // Debounce the search box so the table only queries the backend after the
-  // user pauses typing (instead of firing a request on every keystroke).
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedSearch(searchQuery), 300);
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
 
   // Lightweight summary of ALL products (no specs field) for the stats row,
   // charts and the Categories / Brands / Stock tabs. Refetched after mutations.
@@ -1106,15 +1098,10 @@ const downloadProductLog = async (p) => {
 
   return (
     <div className="product-page">
-      <header className="product-header">
-        <div>
-          <h1 className="product-header-title">Product Catalog</h1>
-          <p className="product-header-subtitle">
-            Manage your solar product inventory — track stock levels,
-            categories, brands, and pricing across all product lines.
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        title="Product Catalog"
+        description="Manage your solar product inventory — track stock levels, categories, brands, and pricing across all product lines."
+      />
 
       {/* Stats Summary */}
       <div className="pc-stats-grid">
@@ -1190,43 +1177,11 @@ const downloadProductLog = async (p) => {
             {/* Filter Bar */}
             <div className="product-filter-bar">
               <div className="product-filter-actions">
-                <div className="product-filter-search">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#9ca3af"
-                    strokeWidth="2"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                  <input
-                    type="text"
-                    placeholder="Search products by name, brand, ID"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  {searchQuery && (
-                    <button
-                      className="product-search-clear"
-                      onClick={() => setSearchQuery("")}
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
-                    </button>
-                  )}
-                </div>
+                <SearchBar
+                  placeholder="Search products by name, brand, ID"
+                  value={searchQuery}
+                  onChange={(val) => setSearchQuery(val)}
+                />
                 {/* Category Dropdown */}
                 <Dropdown
                   value={categoryFilter}

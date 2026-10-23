@@ -601,7 +601,68 @@
 /* ═══════════════════════════════════════════════════════════
    Responsive
    ═══════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .cdropdown-filter {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .cdropdown-filter .cdropdown-trigger {
+    width: 100%;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
   .cdropdown-filter {
     flex: 1;
     min-width: 120px;

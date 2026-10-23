@@ -131,7 +131,104 @@
 
 /* ──────── Responsive ──────── */
 
-@media (max-width: 640px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .shared-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+  .shared-pagination__left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .shared-pagination__info {
+    text-align: center;
+  }
+  .shared-pagination__controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .shared-pagination__page-size {
+    justify-content: center;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .shared-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+  .shared-pagination__left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .shared-pagination__info {
+    text-align: center;
+  }
+  .shared-pagination__controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .shared-pagination__page-size {
+    justify-content: center;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .shared-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+  .shared-pagination__left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .shared-pagination__info {
+    text-align: center;
+  }
+  .shared-pagination__controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .shared-pagination__page-size {
+    justify-content: center;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .shared-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+  .shared-pagination__left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .shared-pagination__info {
+    text-align: center;
+  }
+  .shared-pagination__controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .shared-pagination__page-size {
+    justify-content: center;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .shared-pagination {
     flex-direction: column;
     align-items: stretch;

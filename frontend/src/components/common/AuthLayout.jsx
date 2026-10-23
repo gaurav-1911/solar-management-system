@@ -13,8 +13,8 @@ const AuthLayout = ({ children, brandTitle, brandSubtitle, features }) => {
             <img
               src={solarLogo}
               alt="Solar Management System - Gaurav Chavda"
-              width="96"
-              height="96"
+              width="240"
+              height="93"
               className="auth-brand-logo-img"
               loading="eager"
               decoding="async"

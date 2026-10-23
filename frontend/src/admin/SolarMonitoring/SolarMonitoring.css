@@ -468,7 +468,8 @@
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 1200px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -480,9 +481,7 @@
   .health-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 768px) {
   .metrics-grid {
     grid-template-columns: 1fr;
   }
@@ -514,5 +513,275 @@
     flex-direction: column;
     gap: 6px;
     align-items: flex-start;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .efficiency-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .co2-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-stats-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .production-tabs {
+    flex-wrap: wrap;
+  }
+
+  .live-banner {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .monitoring-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

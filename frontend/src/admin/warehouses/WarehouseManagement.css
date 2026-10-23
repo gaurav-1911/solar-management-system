@@ -729,13 +729,12 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 1200px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .wh-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 768px) {
   .wh-stats {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -776,6 +775,265 @@
   .wh-modal {
     max-height: 85vh;
     border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wh-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .wh-stat-card {
+    padding: 14px;
+  }
+
+  .wh-stat-value {
+    font-size: 18px;
+  }
+
+  .wh-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .wh-search-wrap {
+    max-width: none;
+    width: 100%;
+  }
+
+  .wh-form-grid,
+  .wh-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-full-width {
+    grid-column: 1;
+  }
+
+  .wh-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .wh-form-modal,
+  .wh-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wh-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .wh-stat-card {
+    padding: 14px;
+  }
+
+  .wh-stat-value {
+    font-size: 18px;
+  }
+
+  .wh-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .wh-search-wrap {
+    max-width: none;
+    width: 100%;
+  }
+
+  .wh-form-grid,
+  .wh-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-full-width {
+    grid-column: 1;
+  }
+
+  .wh-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .wh-form-modal,
+  .wh-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wh-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .wh-stat-card {
+    padding: 14px;
+  }
+
+  .wh-stat-value {
+    font-size: 18px;
+  }
+
+  .wh-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .wh-search-wrap {
+    max-width: none;
+    width: 100%;
+  }
+
+  .wh-form-grid,
+  .wh-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-full-width {
+    grid-column: 1;
+  }
+
+  .wh-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .wh-form-modal,
+  .wh-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wh-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .wh-stat-card {
+    padding: 14px;
+  }
+
+  .wh-stat-value {
+    font-size: 18px;
+  }
+
+  .wh-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .wh-search-wrap {
+    max-width: none;
+    width: 100%;
+  }
+
+  .wh-form-grid,
+  .wh-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-full-width {
+    grid-column: 1;
+  }
+
+  .wh-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .wh-form-modal,
+  .wh-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wh-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .wh-stat-card {
+    padding: 14px;
+  }
+
+  .wh-stat-value {
+    font-size: 18px;
+  }
+
+  .wh-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .wh-search-wrap {
+    max-width: none;
+    width: 100%;
+  }
+
+  .wh-form-grid,
+  .wh-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wh-full-width {
+    grid-column: 1;
+  }
+
+  .wh-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .wh-form-modal,
+  .wh-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .wh-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

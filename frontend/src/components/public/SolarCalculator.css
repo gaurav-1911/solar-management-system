@@ -200,7 +200,43 @@
 .text-blue { color: #38bdf8; }
 .text-emerald { color: #34d399; }
 
-@media (max-width: 860px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .calc-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .calc-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .calc-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .calc-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .calc-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
   .calc-body-grid {
     grid-template-columns: 1fr;
   }

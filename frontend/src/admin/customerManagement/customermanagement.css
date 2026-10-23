@@ -969,14 +969,68 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
 
-@media (max-width: 768px) {
   .cm-stats-grid { grid-template-columns: 1fr; }
   .cm-filters { flex-wrap: wrap; }
   .cm-filter-selects { width: 100%; }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cm-stats-grid { grid-template-columns: 1fr; }
+  .cm-filters { flex-wrap: wrap; }
+  .cm-filter-selects { width: 100%; }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cm-stats-grid { grid-template-columns: 1fr; }
+  .cm-filters { flex-wrap: wrap; }
+  .cm-filter-selects { width: 100%; }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cm-stats-grid { grid-template-columns: 1fr; }
+  .cm-filters { flex-wrap: wrap; }
+  .cm-filter-selects { width: 100%; }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cm-stats-grid { grid-template-columns: 1fr; }
+  .cm-filters { flex-wrap: wrap; }
+  .cm-filter-selects { width: 100%; }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cm-stats-grid { grid-template-columns: 1fr; }
+  .cm-filters { flex-wrap: wrap; }
+  .cm-filter-selects { width: 100%; }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .cm-stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── Form Field Validation Errors ── */

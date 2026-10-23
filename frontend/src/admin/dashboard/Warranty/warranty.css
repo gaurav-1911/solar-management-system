@@ -815,12 +815,12 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .wm-stats {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-@media (max-width: 960px) {
+
   .wm-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -830,8 +830,7 @@
   .wm-detail-grid {
     grid-template-columns: 1fr;
   }
-}
-@media (max-width: 640px) {
+
   .warranty-module {
     padding: 18px;
   }
@@ -854,6 +853,211 @@
   }
   .wm-stepper__step {
     flex: 1 1 33%;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warranty-module {
+    padding: 18px;
+  }
+  .wm-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wm-toolbar {
+    flex-wrap: wrap;
+  }
+  .wm-stats {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .wm-stepper {
+    flex-wrap: wrap;
+    gap: 10px 0;
+  }
+  .wm-stepper__step {
+    flex: 1 1 33%;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warranty-module {
+    padding: 18px;
+  }
+  .wm-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wm-toolbar {
+    flex-wrap: wrap;
+  }
+  .wm-stats {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .wm-stepper {
+    flex-wrap: wrap;
+    gap: 10px 0;
+  }
+  .wm-stepper__step {
+    flex: 1 1 33%;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warranty-module {
+    padding: 18px;
+  }
+  .wm-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wm-toolbar {
+    flex-wrap: wrap;
+  }
+  .wm-stats {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .wm-stepper {
+    flex-wrap: wrap;
+    gap: 10px 0;
+  }
+  .wm-stepper__step {
+    flex: 1 1 33%;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warranty-module {
+    padding: 18px;
+  }
+  .wm-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wm-toolbar {
+    flex-wrap: wrap;
+  }
+  .wm-stats {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .wm-stepper {
+    flex-wrap: wrap;
+    gap: 10px 0;
+  }
+  .wm-stepper__step {
+    flex: 1 1 33%;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wm-alert-groups {
+    grid-template-columns: 1fr;
+  }
+  .wm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .wm-stats {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

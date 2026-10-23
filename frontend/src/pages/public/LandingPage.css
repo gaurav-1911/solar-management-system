@@ -710,7 +710,8 @@
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 1100px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .features-grid,
   .workflow-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -719,9 +720,207 @@
   .hero-stats-strip {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .creator-card,
+  .contact-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding: 130px 0 70px;
+  }
+
+  .features-grid,
+  .workflow-grid,
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
-@media (max-width: 860px) {
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .creator-card,
+  .contact-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding: 130px 0 70px;
+  }
+
+  .features-grid,
+  .workflow-grid,
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .creator-card,
+  .contact-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding: 130px 0 70px;
+  }
+
+  .features-grid,
+  .workflow-grid,
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .creator-card,
+  .contact-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding: 130px 0 70px;
+  }
+
+  .features-grid,
+  .workflow-grid,
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .creator-card,
+  .contact-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    padding: 130px 0 70px;
+  }
+
+  .features-grid,
+  .workflow-grid,
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .hero-title {
     font-size: 38px;
   }
@@ -737,18 +936,26 @@
   }
 }
 
-@media (max-width: 600px) {
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
   .features-grid,
-  .workflow-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .hero-stats-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .features-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero-title {
-    font-size: 30px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

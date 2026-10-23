@@ -916,11 +916,78 @@
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 1024px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .alert-module { padding: 0; }
+  .usr-header { flex-direction: column; align-items: stretch; gap: 12px; }
+  .usr-header-actions { flex-direction: column; }
+  .am-pref-row { grid-template-columns: 1.4fr repeat(4, 1fr); font-size: 11px; }
+  .am-card { flex-wrap: wrap; }
+
+  .alert-stats-grid { grid-template-columns: 1fr 1fr; }
+  .am-pref-row { grid-template-columns: 1fr; row-gap: 8px; }
+  .am-pref-row--head { display: none; }
+  .am-pref-channel-col { justify-content: space-between; }
+  .am-pref-channel-col::before { content: attr(data-label); }
 }
 
-@media (max-width: 720px) {
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .alert-module { padding: 0; }
+  .usr-header { flex-direction: column; align-items: stretch; gap: 12px; }
+  .usr-header-actions { flex-direction: column; }
+  .am-pref-row { grid-template-columns: 1.4fr repeat(4, 1fr); font-size: 11px; }
+  .am-card { flex-wrap: wrap; }
+
+  .alert-stats-grid { grid-template-columns: 1fr 1fr; }
+  .am-pref-row { grid-template-columns: 1fr; row-gap: 8px; }
+  .am-pref-row--head { display: none; }
+  .am-pref-channel-col { justify-content: space-between; }
+  .am-pref-channel-col::before { content: attr(data-label); }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .alert-module { padding: 0; }
+  .usr-header { flex-direction: column; align-items: stretch; gap: 12px; }
+  .usr-header-actions { flex-direction: column; }
+  .am-pref-row { grid-template-columns: 1.4fr repeat(4, 1fr); font-size: 11px; }
+  .am-card { flex-wrap: wrap; }
+
+  .alert-stats-grid { grid-template-columns: 1fr 1fr; }
+  .am-pref-row { grid-template-columns: 1fr; row-gap: 8px; }
+  .am-pref-row--head { display: none; }
+  .am-pref-channel-col { justify-content: space-between; }
+  .am-pref-channel-col::before { content: attr(data-label); }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .alert-module { padding: 0; }
+  .usr-header { flex-direction: column; align-items: stretch; gap: 12px; }
+  .usr-header-actions { flex-direction: column; }
+  .am-pref-row { grid-template-columns: 1.4fr repeat(4, 1fr); font-size: 11px; }
+  .am-card { flex-wrap: wrap; }
+
+  .alert-stats-grid { grid-template-columns: 1fr 1fr; }
+  .am-pref-row { grid-template-columns: 1fr; row-gap: 8px; }
+  .am-pref-row--head { display: none; }
+  .am-pref-channel-col { justify-content: space-between; }
+  .am-pref-channel-col::before { content: attr(data-label); }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
   .alert-module { padding: 0; }
   .usr-header { flex-direction: column; align-items: stretch; gap: 12px; }
   .usr-header-actions { flex-direction: column; }
@@ -928,12 +995,19 @@
   .am-card { flex-wrap: wrap; }
 }
 
-@media (max-width: 480px) {
-  .alert-stats-grid { grid-template-columns: 1fr 1fr; }
-  .am-pref-row { grid-template-columns: 1fr; row-gap: 8px; }
-  .am-pref-row--head { display: none; }
-  .am-pref-channel-col { justify-content: space-between; }
-  .am-pref-channel-col::before { content: attr(data-label); }
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .alert-stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @keyframes amFadeIn {

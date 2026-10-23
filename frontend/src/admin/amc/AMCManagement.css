@@ -471,23 +471,129 @@
   line-height: 1.5;
 }
 
-@media (max-width: 960px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .amc-view-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 1024px) {
   .amc-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-@media (max-width: 768px) {
+
   .amc-stats {
     grid-template-columns: 1fr;
   }
   .amc-filter-bar {
     flex-wrap: wrap;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amc-stats {
+    grid-template-columns: 1fr;
+  }
+  .amc-filter-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amc-stats {
+    grid-template-columns: 1fr;
+  }
+  .amc-filter-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amc-stats {
+    grid-template-columns: 1fr;
+  }
+  .amc-filter-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amc-stats {
+    grid-template-columns: 1fr;
+  }
+  .amc-filter-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amc-stats {
+    grid-template-columns: 1fr;
+  }
+  .amc-filter-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .amc-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .amc-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

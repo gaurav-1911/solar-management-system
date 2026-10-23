@@ -1457,119 +1457,9 @@
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 1200px) {
-  .vendor-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  .vendor-grid {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
 
-  .vendor-detail-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .vendor-po-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
-  .perf-stats-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .perf-charts-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .perf-ranking-scores {
-    min-width: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .vendor-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .vendor-tabs {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .vendor-tab-btn {
-    padding: 8px 14px;
-    font-size: 12px;
-  }
-
-  .vendor-filter-actions {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .vendor-filter-search {
-    width: 100%;
-    min-width: 0;
-    order: -1;
-  }
-
-  .vendor-filter-dropdown {
-    flex: 1;
-    min-width: 130px;
-  }
-
-  .vendor-filter-dropdown select {
-    min-width: 0;
-    width: 100%;
-  }
-
-  .vendor-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .vendor-po-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .po-card-dates {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .po-timeline {
-    overflow-x: auto;
-  }
-
-  .vendor-payments-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .payment-card-dates {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .perf-stats-row {
-    grid-template-columns: 1fr;
-  }
-
-  .perf-ranking-item {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .perf-ranking-scores {
-    min-width: 100%;
-    order: 6;
-  }
-
-  .vendor-detail-header {
-    flex-wrap: wrap;
-  }
-
-  .vendor-card-header {
-    align-items: center;
-  }
-}
 
 /* ========== PAGINATION BUTTONS ========== */
 .inv-page-btn {
@@ -2135,8 +2025,768 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
   .vendor-activity-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
+  .vendor-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
+  .vendor-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
+  .vendor-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
+  .vendor-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+
+  .vendor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vendor-tab-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .vendor-filter-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vendor-filter-search {
+    width: 100%;
+    min-width: 0;
+    order: -1;
+  }
+
+  .vendor-filter-dropdown {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .vendor-filter-dropdown select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .po-card-dates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .po-timeline {
+    overflow-x: auto;
+  }
+
+  .vendor-payments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card-dates {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .perf-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100%;
+    order: 6;
+  }
+
+  .vendor-detail-header {
+    flex-wrap: wrap;
+  }
+
+  .vendor-card-header {
+    align-items: center;
+  }
+
+  .vendor-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .vendor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .vendor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-po-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .perf-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perf-ranking-scores {
+    min-width: 100px;
   }
 }

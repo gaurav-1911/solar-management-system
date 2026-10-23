@@ -118,7 +118,36 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 640px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .shared-toast-container { top: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
+  .shared-toast { width: 100%; max-width: none; padding: 10px 14px; font-size: 13px; white-space: normal; }
+  .shared-toast__text { max-width: none; }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .shared-toast-container { top: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
+  .shared-toast { width: 100%; max-width: none; padding: 10px 14px; font-size: 13px; white-space: normal; }
+  .shared-toast__text { max-width: none; }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .shared-toast-container { top: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
+  .shared-toast { width: 100%; max-width: none; padding: 10px 14px; font-size: 13px; white-space: normal; }
+  .shared-toast__text { max-width: none; }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .shared-toast-container { top: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
+  .shared-toast { width: 100%; max-width: none; padding: 10px 14px; font-size: 13px; white-space: normal; }
+  .shared-toast__text { max-width: none; }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .shared-toast-container { top: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
   .shared-toast { width: 100%; max-width: none; padding: 10px 14px; font-size: 13px; white-space: normal; }
   .shared-toast__text { max-width: none; }

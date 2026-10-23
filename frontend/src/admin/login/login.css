@@ -1,4 +1,4 @@
-﻿.login-card {
+.login-card {
   width: 100%;
   max-width: 420px;
   background: #ffffff;
@@ -141,8 +141,264 @@
   border-radius: 4px;
 }
 
-@media (max-width: 900px) {
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .login-card {
+    padding: 22px 14px;
+    border-radius: 12px;
+    max-width: 100%;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .login-card .card-header {
+    margin-bottom: 18px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 20px;
+  }
+
+  .login-card .card-header p {
+    font-size: 12px;
+  }
+
+  .login-form {
+    gap: 14px;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .forgot-link {
+    font-size: 12px;
+  }
+
+  .card-footer {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .login-card {
+    padding: 26px 18px;
+    border-radius: 12px;
+    max-width: 100%;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .login-card .card-header {
+    margin-bottom: 20px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 21px;
+  }
+
+  .login-card .card-header p {
+    font-size: 12.5px;
+  }
+
+  .login-form {
+    gap: 15px;
+  }
+
+  .form-options {
+    font-size: 12.5px;
+    gap: 6px;
+  }
+
+  .card-footer {
+    margin-top: 22px;
+    font-size: 12.5px;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .login-card {
+    padding: 30px 22px;
+    border-radius: 14px;
+    max-width: 100%;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.07);
+  }
+
+  .login-card .card-header {
+    margin-bottom: 22px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 22px;
+  }
+
+  .login-card .card-header p {
+    font-size: 13px;
+  }
+
+  .login-form {
+    gap: 16px;
+  }
+
+  .form-options {
+    font-size: 13px;
+  }
+
+  .card-footer {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .login-card {
+    padding: 34px 26px;
+    border-radius: 14px;
+    max-width: 420px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 24px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 23px;
+  }
+
+  .login-form {
+    gap: 17px;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .login-card {
+    padding: 38px 30px;
+    border-radius: 16px;
+    max-width: 440px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 26px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 24px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .login-card {
+    padding: 42px 34px;
+    border-radius: 16px;
+    max-width: 440px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 28px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 25px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
   .login-card {
     padding: 36px 28px;
+    border-radius: 14px;
+    max-width: 390px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 24px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 24px;
+  }
+
+  .login-form {
+    gap: 16px;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .login-card {
+    padding: 42px 34px;
+    border-radius: 16px;
+    max-width: 410px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 26px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 25px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+}
+
+/* Desktop: 1280px–1439px */
+@media screen and (min-width: 1280px) and (max-width: 1439px) {
+  .login-card {
+    padding: 48px 40px;
+    border-radius: 16px;
+    max-width: 430px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 30px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 26px;
+  }
+
+  .login-form {
+    gap: 20px;
+  }
+}
+
+/* Large desktop: 1440px and above */
+@media screen and (min-width: 1440px) {
+  .login-card {
+    padding: 54px 44px;
+    border-radius: 18px;
+    max-width: 460px;
+  }
+
+  .login-card .card-header {
+    margin-bottom: 34px;
+  }
+
+  .login-card .card-header h2 {
+    font-size: 28px;
+  }
+
+  .login-form {
+    gap: 22px;
   }
 }

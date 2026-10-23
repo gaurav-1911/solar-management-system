@@ -443,7 +443,36 @@
   transform: translateY(-1px) !important;
 }
 
-@media (max-width: 640px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .ram-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .ram-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .ram-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .ram-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .ram-stats-row {
     grid-template-columns: repeat(2, 1fr);
   }

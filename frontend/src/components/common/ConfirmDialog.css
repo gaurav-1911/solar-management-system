@@ -161,7 +161,60 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@media (max-width: 640px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .shared-confirm {
+    padding: 18px 18px 16px;
+  }
+  .shared-confirm__actions {
+    flex-direction: column;
+  }
+  .shared-confirm__btn {
+    width: 100%;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .shared-confirm {
+    padding: 18px 18px 16px;
+  }
+  .shared-confirm__actions {
+    flex-direction: column;
+  }
+  .shared-confirm__btn {
+    width: 100%;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .shared-confirm {
+    padding: 18px 18px 16px;
+  }
+  .shared-confirm__actions {
+    flex-direction: column;
+  }
+  .shared-confirm__btn {
+    width: 100%;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .shared-confirm {
+    padding: 18px 18px 16px;
+  }
+  .shared-confirm__actions {
+    flex-direction: column;
+  }
+  .shared-confirm__btn {
+    width: 100%;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .shared-confirm {
     padding: 18px 18px 16px;
   }

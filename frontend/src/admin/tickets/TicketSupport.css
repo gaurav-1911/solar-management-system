@@ -1041,7 +1041,8 @@
   line-height: 1.5;
 }
 
-@media (max-width: 960px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .ts-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1049,8 +1050,7 @@
   .ts-view-grid {
     grid-template-columns: 1fr;
   }
-}
-@media (max-width: 640px) {
+
   .ticket-module {
     padding: 18px;
   }
@@ -1067,6 +1067,144 @@
   }
   .ts-search-wrap {
     max-width: none;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-module {
+    padding: 18px;
+  }
+  .ts-stats {
+    grid-template-columns: 1fr;
+  }
+  .ts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ts-toolbar .ts-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .ts-search-wrap {
+    max-width: none;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-module {
+    padding: 18px;
+  }
+  .ts-stats {
+    grid-template-columns: 1fr;
+  }
+  .ts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ts-toolbar .ts-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .ts-search-wrap {
+    max-width: none;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-module {
+    padding: 18px;
+  }
+  .ts-stats {
+    grid-template-columns: 1fr;
+  }
+  .ts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ts-toolbar .ts-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .ts-search-wrap {
+    max-width: none;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-module {
+    padding: 18px;
+  }
+  .ts-stats {
+    grid-template-columns: 1fr;
+  }
+  .ts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ts-toolbar .ts-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .ts-search-wrap {
+    max-width: none;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .ts-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ts-form-grid,
+  .ts-view-grid {
+    grid-template-columns: 1fr;
   }
 }
 @media (prefers-reduced-motion: reduce) {

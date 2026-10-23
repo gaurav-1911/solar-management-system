@@ -2152,10 +2152,7 @@
   line-height: 1.6;
 }
 
-@media (max-width: 640px) {
-  .ss-customer-grid { grid-template-columns: 1fr; }
-  .ss-customer-item-wide { grid-column: span 1; }
-}
+
 
 .ss-form-page-footer {
   display: flex;
@@ -2174,7 +2171,112 @@
 /* =========================================================
    Responsive – 1200px
    ========================================================= */
-@media (max-width: 1200px) {
+
+
+/* =========================================================
+   Responsive – 768px
+   ========================================================= */
+
+
+/* ---- Charts ---- */
+.ss-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ss-chart-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ss-chart-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 12px;
+  flex-shrink: 0;
+}
+
+/* Loading state used by the report pages */
+.ss-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 0;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ss-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: ss-spin 0.8s linear infinite;
+}
+
+@keyframes ss-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Clickable customer name in the table (opens customer details) */
+.ss-customer-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #0d9488;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.ss-customer-link:hover {
+  color: #0f766e;
+}
+/* Inline status dropdown in the surveys table */
+.ss-inline-status {
+  min-width: 130px;
+}
+.ss-inline-status .cdropdown-trigger {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 26px;
+}
+.ss-inline-status.cdropdown-disabled .cdropdown-trigger {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+/* Status colors on the inline dropdown trigger */
+.ss-inline-status .cdropdown-trigger { color: #64748b; }
+.ss-inline-completed .cdropdown-trigger { color: #16a34a; }
+.ss-inline-scheduled .cdropdown-trigger { color: #2563eb; }
+.ss-inline-cancelled .cdropdown-trigger { color: #dc2626; }
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .ss-customer-grid { grid-template-columns: 1fr; }
+  .ss-customer-item-wide { grid-column: span 1; }
+
   .ss-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2195,12 +2297,7 @@
   .ss-form-grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-/* =========================================================
-   Responsive – 768px
-   ========================================================= */
-@media (max-width: 768px) {
   .ss-page {
     padding: 16px;
     gap: 14px;
@@ -2310,94 +2407,722 @@
   }
 }
 
-/* ---- Charts ---- */
-.ss-charts-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .ss-customer-grid { grid-template-columns: 1fr; }
+  .ss-customer-item-wide { grid-column: span 1; }
 
-.ss-chart-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-}
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.ss-chart-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-  margin: 0 0 12px;
-  flex-shrink: 0;
-}
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
 
-/* Loading state used by the report pages */
-.ss-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 48px 0;
-  color: #64748b;
-  font-size: 14px;
-  font-weight: 500;
-}
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
 
-.ss-spinner {
-  width: 18px;
-  height: 18px;
-  border: 3px solid #e2e8f0;
-  border-top-color: #6366f1;
-  border-radius: 50%;
-  animation: ss-spin 0.8s linear infinite;
-}
+  .ss-shadow-options {
+    flex-direction: column;
+  }
 
-@keyframes ss-spin {
-  to {
-    transform: rotate(360deg);
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-page {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ss-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ss-stat-card {
+    padding: 14px;
+  }
+
+  .ss-stat-value {
+    font-size: 18px;
+  }
+
+  .ss-search { max-width: none; }
+  .ss-toolbar { flex-direction: column; align-items: stretch; }
+  .ss-toolbar .ss-btn-primary { width: 100%; }
+  .ss-search { max-width: none; }
+
+  .ss-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .ss-form-modal,
+  .ss-view-modal,
+  .ss-report-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ss-form-grid,
+  .ss-form-grid-2,
+  .ss-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-full-width {
+    grid-column: 1;
+  }
+
+  .ss-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-report-paper {
+    padding: 24px 18px;
+  }
+
+  .ss-report-title {
+    font-size: 16px;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-roof-options {
+    flex-wrap: wrap;
+  }
+
+  .ss-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  /* Form thumbnails fill their card on small screens; view-modal
+     previews keep the fixed 200px thumbnail size so they wrap neatly. */
+  .ss-photo-thumb img,
+  .ss-photo-thumb .ss-photo-preview-loading,
+  .ss-photo-thumb .ss-photo-preview-error {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ss-bill-preview img,
+  .ss-bill-preview-img {
+    height: 160px;
+  }
+
+  .ss-view-photo-card {
+    width: 150px;
+  }
+
+  .ss-pagination-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ss-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ss-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .ss-charts-row {
+    flex-direction: column;
   }
 }
 
-/* Clickable customer name in the table (opens customer details) */
-.ss-customer-link {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: #0d9488;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s;
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .ss-customer-grid { grid-template-columns: 1fr; }
+  .ss-customer-item-wide { grid-column: span 1; }
+
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-page {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ss-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ss-stat-card {
+    padding: 14px;
+  }
+
+  .ss-stat-value {
+    font-size: 18px;
+  }
+
+  .ss-search { max-width: none; }
+  .ss-toolbar { flex-direction: column; align-items: stretch; }
+  .ss-toolbar .ss-btn-primary { width: 100%; }
+  .ss-search { max-width: none; }
+
+  .ss-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .ss-form-modal,
+  .ss-view-modal,
+  .ss-report-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ss-form-grid,
+  .ss-form-grid-2,
+  .ss-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-full-width {
+    grid-column: 1;
+  }
+
+  .ss-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-report-paper {
+    padding: 24px 18px;
+  }
+
+  .ss-report-title {
+    font-size: 16px;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-roof-options {
+    flex-wrap: wrap;
+  }
+
+  .ss-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  /* Form thumbnails fill their card on small screens; view-modal
+     previews keep the fixed 200px thumbnail size so they wrap neatly. */
+  .ss-photo-thumb img,
+  .ss-photo-thumb .ss-photo-preview-loading,
+  .ss-photo-thumb .ss-photo-preview-error {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ss-bill-preview img,
+  .ss-bill-preview-img {
+    height: 160px;
+  }
+
+  .ss-view-photo-card {
+    width: 150px;
+  }
+
+  .ss-pagination-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ss-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ss-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .ss-charts-row {
+    flex-direction: column;
+  }
 }
 
-.ss-customer-link:hover {
-  color: #0f766e;
-}
-/* Inline status dropdown in the surveys table */
-.ss-inline-status {
-  min-width: 130px;
-}
-.ss-inline-status .cdropdown-trigger {
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  min-height: 26px;
-}
-.ss-inline-status.cdropdown-disabled .cdropdown-trigger {
-  opacity: 0.55;
-  cursor: wait;
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .ss-customer-grid { grid-template-columns: 1fr; }
+  .ss-customer-item-wide { grid-column: span 1; }
+
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-page {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ss-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ss-stat-card {
+    padding: 14px;
+  }
+
+  .ss-stat-value {
+    font-size: 18px;
+  }
+
+  .ss-search { max-width: none; }
+  .ss-toolbar { flex-direction: column; align-items: stretch; }
+  .ss-toolbar .ss-btn-primary { width: 100%; }
+  .ss-search { max-width: none; }
+
+  .ss-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .ss-form-modal,
+  .ss-view-modal,
+  .ss-report-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ss-form-grid,
+  .ss-form-grid-2,
+  .ss-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-full-width {
+    grid-column: 1;
+  }
+
+  .ss-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-report-paper {
+    padding: 24px 18px;
+  }
+
+  .ss-report-title {
+    font-size: 16px;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-roof-options {
+    flex-wrap: wrap;
+  }
+
+  .ss-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  /* Form thumbnails fill their card on small screens; view-modal
+     previews keep the fixed 200px thumbnail size so they wrap neatly. */
+  .ss-photo-thumb img,
+  .ss-photo-thumb .ss-photo-preview-loading,
+  .ss-photo-thumb .ss-photo-preview-error {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ss-bill-preview img,
+  .ss-bill-preview-img {
+    height: 160px;
+  }
+
+  .ss-view-photo-card {
+    width: 150px;
+  }
+
+  .ss-pagination-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ss-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ss-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .ss-charts-row {
+    flex-direction: column;
+  }
 }
 
-/* Status colors on the inline dropdown trigger */
-.ss-inline-status .cdropdown-trigger { color: #64748b; }
-.ss-inline-completed .cdropdown-trigger { color: #16a34a; }
-.ss-inline-scheduled .cdropdown-trigger { color: #2563eb; }
-.ss-inline-cancelled .cdropdown-trigger { color: #dc2626; }
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .ss-customer-grid { grid-template-columns: 1fr; }
+  .ss-customer-item-wide { grid-column: span 1; }
+
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-page {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ss-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ss-stat-card {
+    padding: 14px;
+  }
+
+  .ss-stat-value {
+    font-size: 18px;
+  }
+
+  .ss-search { max-width: none; }
+  .ss-toolbar { flex-direction: column; align-items: stretch; }
+  .ss-toolbar .ss-btn-primary { width: 100%; }
+  .ss-search { max-width: none; }
+
+  .ss-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .ss-form-modal,
+  .ss-view-modal,
+  .ss-report-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ss-form-grid,
+  .ss-form-grid-2,
+  .ss-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-full-width {
+    grid-column: 1;
+  }
+
+  .ss-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-report-paper {
+    padding: 24px 18px;
+  }
+
+  .ss-report-title {
+    font-size: 16px;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-roof-options {
+    flex-wrap: wrap;
+  }
+
+  .ss-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  /* Form thumbnails fill their card on small screens; view-modal
+     previews keep the fixed 200px thumbnail size so they wrap neatly. */
+  .ss-photo-thumb img,
+  .ss-photo-thumb .ss-photo-preview-loading,
+  .ss-photo-thumb .ss-photo-preview-error {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ss-bill-preview img,
+  .ss-bill-preview-img {
+    height: 160px;
+  }
+
+  .ss-view-photo-card {
+    width: 150px;
+  }
+
+  .ss-pagination-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ss-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ss-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .ss-charts-row {
+    flex-direction: column;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-page {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ss-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ss-stat-card {
+    padding: 14px;
+  }
+
+  .ss-stat-value {
+    font-size: 18px;
+  }
+
+  .ss-search { max-width: none; }
+  .ss-toolbar { flex-direction: column; align-items: stretch; }
+  .ss-toolbar .ss-btn-primary { width: 100%; }
+  .ss-search { max-width: none; }
+
+  .ss-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .ss-form-modal,
+  .ss-view-modal,
+  .ss-report-modal {
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ss-form-grid,
+  .ss-form-grid-2,
+  .ss-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-full-width {
+    grid-column: 1;
+  }
+
+  .ss-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-report-paper {
+    padding: 24px 18px;
+  }
+
+  .ss-report-title {
+    font-size: 16px;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-roof-options {
+    flex-wrap: wrap;
+  }
+
+  .ss-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  /* Form thumbnails fill their card on small screens; view-modal
+     previews keep the fixed 200px thumbnail size so they wrap neatly. */
+  .ss-photo-thumb img,
+  .ss-photo-thumb .ss-photo-preview-loading,
+  .ss-photo-thumb .ss-photo-preview-error {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ss-bill-preview img,
+  .ss-bill-preview-img {
+    height: 160px;
+  }
+
+  .ss-view-photo-card {
+    width: 150px;
+  }
+
+  .ss-pagination-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ss-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ss-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .ss-charts-row {
+    flex-direction: column;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .ss-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ss-search {
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ss-shadow-options {
+    flex-direction: column;
+  }
+
+  .ss-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

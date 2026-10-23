@@ -187,13 +187,12 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 1024px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .public-footer-container {
     grid-template-columns: 1fr 1fr;
   }
-}
 
-@media (max-width: 640px) {
   .public-footer-container {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -202,5 +201,94 @@
   .public-footer-bottom .bottom-flex {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .public-footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .public-footer-bottom .bottom-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .public-footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .public-footer-bottom .bottom-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .public-footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .public-footer-bottom .bottom-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .public-footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .public-footer-bottom .bottom-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .public-footer-container {
+    grid-template-columns: 1fr 1fr;
   }
 }

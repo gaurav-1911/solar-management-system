@@ -366,7 +366,108 @@
   transform: translateY(0);
 }
 
-@media (max-width: 860px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .ad-orb--rose {
+    display: none;
+  }
+  .access-denied-content {
+    padding: 20px 16px;
+  }
+  .ad-card {
+    padding: 30px 24px 26px;
+    border-radius: 16px;
+  }
+  .ad-title {
+    font-size: 25px;
+  }
+  .ad-account-role {
+    display: none;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
   .ad-orb--rose {
     display: none;
   }

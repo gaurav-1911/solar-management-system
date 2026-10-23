@@ -1045,7 +1045,8 @@
 }
 
 /* ========== TECHNICIAN MANAGEMENT RESPONSIVE ========== */
-@media (max-width: 1200px) {
+/* Mobile: up to 320px */
+@media screen and (max-width: 320px) {
   .tm-location-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1064,9 +1065,7 @@
   .tm-chart-wide {
     grid-column: 1 / -1;
   }
-}
 
-@media (max-width: 768px) {
   .tm-location-grid {
     grid-template-columns: 1fr;
   }
@@ -1119,6 +1118,430 @@
 
   .tm-skill-checkboxes {
     flex-direction: column;
+  }
+}
+
+/* Mobile: 321px–375px */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* Mobile: 376px–475px */
+@media screen and (min-width: 376px) and (max-width: 475px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* Large mobile: 476px–575px */
+@media screen and (min-width: 476px) and (max-width: 575px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* Small tablet: 576px–767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* Tablet: 768px–920px */
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+
+  .tm-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-perf-bar-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tm-perf-bar-label {
+    min-width: 0;
+  }
+
+  .tm-perf-bar-value {
+    text-align: left;
+  }
+
+  .tm-file-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tm-file-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .tm-photos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tm-tech-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-tech-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tm-skill-checkboxes {
+    flex-direction: column;
+  }
+}
+
+/* Tablet / compact layout: 921px–1023px */
+@media screen and (min-width: 921px) and (max-width: 1023px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Laptop: 1024px–1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .tm-location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-perf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tm-charts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tm-chart-wide {
+    grid-column: 1 / -1;
   }
 }
 

@@ -87,7 +87,6 @@ const LeadManagement = () => {
   const debouncedSearch = useDebounce(search, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [sourceFilter, setSourceFilter] = useState("All");
-  const [assignedFilter, setAssignedFilter] = useState("All");
   const [showModal, setShowModal] = useState(false);
   const [editingLead, setEditingLead] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -139,7 +138,7 @@ const LeadManagement = () => {
 
   /* ── Fetch Leads (server-side pagination/filtering via TanStack Query) ── */
   const { data: leadData, isLoading: loading } = useQuery({
-    queryKey: ["leads", currentPage, pageSize, debouncedSearch, statusFilter, sourceFilter, assignedFilter, dateFrom, dateTo],
+    queryKey: ["leads", currentPage, pageSize, debouncedSearch, statusFilter, sourceFilter, dateFrom, dateTo],
     queryFn: async () => {
       const params = {
         page: currentPage,
@@ -148,7 +147,6 @@ const LeadManagement = () => {
       if (debouncedSearch) params.search = debouncedSearch;
       if (statusFilter !== "All") params.status = statusFilter;
       if (sourceFilter !== "All") params.source = sourceFilter;
-      if (assignedFilter !== "All") params.assigned = assignedFilter;
       if (dateFrom) params.startDate = dateFrom;
       if (dateTo) params.endDate = dateTo;
 
@@ -314,15 +312,13 @@ const LeadManagement = () => {
   const leadMatchesFilters = useCallback((lead) => {
     if (statusFilter !== "All" && (lead.status || "") !== statusFilter) return false;
     if (sourceFilter !== "All" && (lead.source || "") !== sourceFilter) return false;
-    if (assignedFilter === "Assigned" && (!lead.assigned || lead.assigned === "Unassigned")) return false;
-    if (assignedFilter === "Unassigned" && (lead.assigned || "") !== "Unassigned") return false;
     if (debouncedSearch.trim()) {
       const q = debouncedSearch.trim().toLowerCase();
       const hay = `${lead.name || ""} ${lead.email || ""} ${lead.phone || ""}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
-  }, [statusFilter, sourceFilter, assignedFilter, debouncedSearch]);
+  }, [statusFilter, sourceFilter, debouncedSearch]);
 
   const upsertLead = useCallback((lead) => {
     const id = lead.id || lead._id;
@@ -963,15 +959,7 @@ const downloadLeadLog = async (lead) => {
                   ...sources.map((s) => ({ value: s, label: s })),
                 ]}
               />
-              <Dropdown
-                value={assignedFilter}
-                onChange={(val) => { setAssignedFilter(val); setCurrentPage(1); }}
-                options={[
-                  { value: "All", label: "All Assignees" },
-                  { value: "Assigned", label: "Assigned" },
-                  { value: "Unassigned", label: "Unassigned" },
-                ]}
-              />
+
               <input type="date" className="lm-filter-date-inline" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setCurrentPage(1); }} title="From date" />
               <input type="date" className="lm-filter-date-inline" value={dateTo} onChange={(e) => { setDateTo(e.target.value); setCurrentPage(1); }} title="To date" />
             </div>
